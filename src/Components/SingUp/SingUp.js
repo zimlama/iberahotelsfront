@@ -4,6 +4,7 @@ import {
 } from '@chakra-ui/react';
 import { useState } from "react";
 import axios from 'axios';
+const { REACT_FRONT_URL } = process.env;
 
 function SingUp(props) {
 
