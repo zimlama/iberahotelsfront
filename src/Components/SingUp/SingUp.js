@@ -12,7 +12,9 @@ function SingUp(props) {
     const DayArray = [];
     const MonthArray = [];
     const YearArray = [];
-    const appId = "1644606985997067";
+    // #13 30.58 src/Components/SingUp/SingUp.js
+    // ﻿#13 30.58   Line 15:11:   'appId' is assigned a value but never used  no-unused-vars
+    // const appId = "1644606985997067";
 
     for (let i = 1; i < 32; i++) {
         DayArray.push(i);
@@ -103,22 +105,27 @@ function SingUp(props) {
 
     };
 
-    var errorBirthday = "error";
-    var errorBsuccessful = "";
+    // #13 30.58 src/Components/SingUp/SingUp.js
+    // ﻿#13 30.58   Line 110:13:  'errorBirthday' is already defined          no-redeclare
+    // ﻿#13 30.58   Line 111:13:  'errorBsuccessful' is already defined       no-redeclare
+    // var errorBirthday = "error";
+    // var errorBsuccessful = "";
 
-    if (input.date_birth.length >= 8) {
-        var errorBirthday = "";
-        var errorBsuccessful = "error";
-    };
+    // if (input.date_birth.length >= 8) {
+    //     var errorBirthday = "";
+    //     var errorBsuccessful = "error";
+    // };
 
+    // #13 30.58 src/Components/SingUp/SingUp.js
+    // ﻿#13 30.58   Line 119:13:  'errorNTsuccessful' is already defined      no-redeclare
+    // ﻿#13 30.58   Line 120:13:  'errorNation' is already defined            no-redeclare    
+    // var errorNTsuccessful = "";
+    // var errorNation = "error";
 
-    var errorNTsuccessful = "";
-    var errorNation = "error";
-
-    if (input.nationality) {
-        var errorNTsuccessful = "error";
-        var errorNation = "";
-    };
+    // if (input.nationality) {
+    //     var errorNTsuccessful = "error";
+    //     var errorNation = "";
+    // };
 
 
     var errorEmail = "";
@@ -342,7 +349,7 @@ function SingUp(props) {
 
                     <FormControl>
 
-                        {errorBirthday && !errorBsuccessful ? (
+                        {/* {errorBirthday && !errorBsuccessful ? (
                             <FormHelperText>
                                 Complete Birthday.
                             </FormHelperText>
@@ -355,7 +362,7 @@ function SingUp(props) {
                             </FormHelperText>
                         ) : (
                             <FormErrorMessage></FormErrorMessage>
-                        )}
+                        )} */}
 
                     </FormControl>
 
@@ -379,7 +386,7 @@ function SingUp(props) {
 
                     <FormControl>
 
-                        {errorNation && !errorNTsuccessful ? (
+                        {/* {errorNation && !errorNTsuccessful ? (
                             <FormHelperText>
                                 Complete Nationality.
                             </FormHelperText>
@@ -392,7 +399,7 @@ function SingUp(props) {
                             </FormHelperText>
                         ) : (
                             <FormErrorMessage></FormErrorMessage>
-                        )}
+                        )} */}
 
                     </FormControl>
 

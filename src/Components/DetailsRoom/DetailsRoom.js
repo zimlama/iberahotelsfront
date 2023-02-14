@@ -1,3 +1,20 @@
+// #13 30.58 src/Components/DetailsRoom/DetailsRoom.js
+// ﻿#13 30.58   Line 10:3:   'Link' is defined but never used      no-unused-vars
+// ﻿#13 30.58   Line 14:17:  'useState' is defined but never used  no-unused-vars
+// import {
+//   Card,
+//   CardBody,
+//   Image,
+//   Stack,
+//   Text,
+//   Heading,
+//   CardFooter,
+//   Button,
+//   Link,
+//   Icon,
+//   Box,
+// } from "@chakra-ui/react";
+// import React, { useState } from "react";
 import {
   Card,
   CardBody,
@@ -7,11 +24,9 @@ import {
   Heading,
   CardFooter,
   Button,
-  Link,
   Icon,
   Box,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoBedSharp } from "react-icons/io5";
 
