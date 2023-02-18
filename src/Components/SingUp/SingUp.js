@@ -348,6 +348,11 @@ function SingUp(props) {
 
                     <FormControl>
 
+                    {/* #13 45.40 src/Components/SingUp/SingUp.js
+                    ﻿#13 45.40   Line 351:26:  'errorBirthday' is not defined      no-undef
+                    ﻿#13 45.40   Line 351:44:  'errorBsuccessful' is not defined   no-undef
+                    ﻿#13 45.40   Line 358:27:  'errorBirthday' is not defined      no-undef
+                    ﻿#13 45.40   Line 358:44:  'errorBsuccessful' is not defined   no-undef
                         {errorBirthday && !errorBsuccessful ? (
                             <FormHelperText>
                                 Complete Birthday.
@@ -361,7 +366,7 @@ function SingUp(props) {
                             </FormHelperText>
                         ) : (
                             <FormErrorMessage></FormErrorMessage>
-                        )}
+                        )} */}
 
                     </FormControl>
 
@@ -385,6 +390,11 @@ function SingUp(props) {
 
                     <FormControl>
 
+                    {/* #13 45.40 src/Components/SingUp/SingUp.js
+                    ﻿#13 45.40   Line 388:26:  'errorNation' is not defined        no-undef
+                    ﻿#13 45.40   Line 388:42:  'errorNTsuccessful' is not defined  no-undef
+                    ﻿#13 45.40   Line 395:27:  'errorNation' is not defined        no-undef
+                    ﻿#13 45.40   Line 395:42:  'errorNTsuccessful' is not defined  no-undef
                         {errorNation && !errorNTsuccessful ? (
                             <FormHelperText>
                                 Complete Nationality.
@@ -398,7 +408,7 @@ function SingUp(props) {
                             </FormHelperText>
                         ) : (
                             <FormErrorMessage></FormErrorMessage>
-                        )}
+                        )} */}
 
                     </FormControl>
 
