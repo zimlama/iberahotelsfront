@@ -26,7 +26,7 @@ import {
 import { createHotel } from "../../Redux/actions/hotels";
 import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 const avatars = [
   {
