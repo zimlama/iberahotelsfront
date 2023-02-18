@@ -346,29 +346,7 @@ function SingUp(props) {
 
                 <div>
 
-                    <FormControl>
-
-                    {/* #13 45.40 src/Components/SingUp/SingUp.js
-                    ﻿#13 45.40   Line 351:26:  'errorBirthday' is not defined      no-undef
-                    ﻿#13 45.40   Line 351:44:  'errorBsuccessful' is not defined   no-undef
-                    ﻿#13 45.40   Line 358:27:  'errorBirthday' is not defined      no-undef
-                    ﻿#13 45.40   Line 358:44:  'errorBsuccessful' is not defined   no-undef
-                        {errorBirthday && !errorBsuccessful ? (
-                            <FormHelperText>
-                                Complete Birthday.
-                            </FormHelperText>
-                        ) : (
-                            <FormErrorMessage></FormErrorMessage>
-                        )}
-                        {!errorBirthday && errorBsuccessful ? (
-                            <FormHelperText color="red" className="letter" fontWeight='bold'>
-                                Successful
-                            </FormHelperText>
-                        ) : (
-                            <FormErrorMessage></FormErrorMessage>
-                        )} */}
-
-                    </FormControl>
+                    
 
                 </div>
 
@@ -387,30 +365,6 @@ function SingUp(props) {
                 </div>
 
                 <div>
-
-                    <FormControl>
-
-                    {/* #13 45.40 src/Components/SingUp/SingUp.js
-                    ﻿#13 45.40   Line 388:26:  'errorNation' is not defined        no-undef
-                    ﻿#13 45.40   Line 388:42:  'errorNTsuccessful' is not defined  no-undef
-                    ﻿#13 45.40   Line 395:27:  'errorNation' is not defined        no-undef
-                    ﻿#13 45.40   Line 395:42:  'errorNTsuccessful' is not defined  no-undef
-                        {errorNation && !errorNTsuccessful ? (
-                            <FormHelperText>
-                                Complete Nationality.
-                            </FormHelperText>
-                        ) : (
-                            <FormErrorMessage></FormErrorMessage>
-                        )}
-                        {!errorNation && errorNTsuccessful ? (
-                            <FormHelperText color="red" className="letter" fontWeight='bold'>
-                                Successful
-                            </FormHelperText>
-                        ) : (
-                            <FormErrorMessage></FormErrorMessage>
-                        )} */}
-
-                    </FormControl>
 
                 </div>
 
@@ -447,3 +401,48 @@ function SingUp(props) {
 export default SingUp;
 
 //
+
+{/* <FormControl>
+#13 45.40 src/Components/SingUp/SingUp.js
+﻿#13 45.40   Line 351:26:  'errorBirthday' is not defined      no-undef
+﻿#13 45.40   Line 351:44:  'errorBsuccessful' is not defined   no-undef
+﻿#13 45.40   Line 358:27:  'errorBirthday' is not defined      no-undef
+﻿#13 45.40   Line 358:44:  'errorBsuccessful' is not defined   no-undef
+    {errorBirthday && !errorBsuccessful ? (
+        <FormHelperText>
+            Complete Birthday.
+        </FormHelperText>
+    ) : (
+        <FormErrorMessage></FormErrorMessage>
+    )}
+    {!errorBirthday && errorBsuccessful ? (
+        <FormHelperText color="red" className="letter" fontWeight='bold'>
+            Successful
+        </FormHelperText>
+    ) : (
+        <FormErrorMessage></FormErrorMessage>
+    )}
+</FormControl> */}
+
+
+{/* <FormControl>
+#13 45.40 src/Components/SingUp/SingUp.js
+﻿#13 45.40   Line 388:26:  'errorNation' is not defined        no-undef
+﻿#13 45.40   Line 388:42:  'errorNTsuccessful' is not defined  no-undef
+﻿#13 45.40   Line 395:27:  'errorNation' is not defined        no-undef
+﻿#13 45.40   Line 395:42:  'errorNTsuccessful' is not defined  no-undef
+    {errorNation && !errorNTsuccessful ? (
+        <FormHelperText>
+            Complete Nationality.
+        </FormHelperText>
+    ) : (
+        <FormErrorMessage></FormErrorMessage>
+    )}
+    {!errorNation && errorNTsuccessful ? (
+        <FormHelperText color="red" className="letter" fontWeight='bold'>
+            Successful
+        </FormHelperText>
+    ) : (
+        <FormErrorMessage></FormErrorMessage>
+    )}
+</FormControl> */}

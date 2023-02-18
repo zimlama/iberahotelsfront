@@ -132,12 +132,6 @@ export default function CreateHotelIbera() {
         confirmButtonColor: '#F27474'
       })
     } else {
-      // #13 45.40 src/Components/Create/CreateHotel.js
-      // ﻿#13 45.40   Line 136:11:  'image' is not defined  no-undef
-      // ﻿#13 45.40   Line 137:23:  'image' is not defined  no-undef      
-      // if (image !== null) {
-      //   input.image = image.url
-      // }
       setErrors(validate(input))
       dispatch(createHotel(input))
       Swal.fire({
@@ -432,3 +426,10 @@ export const Blur = (IconProps) => {
     </Icon>
   );
 };
+
+      // #13 45.40 src/Components/Create/CreateHotel.js
+      // ﻿#13 45.40   Line 136:11:  'image' is not defined  no-undef
+      // ﻿#13 45.40   Line 137:23:  'image' is not defined  no-undef      
+      // if (image !== null) {
+      //   input.image = image.url
+      // }
