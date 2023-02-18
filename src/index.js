@@ -7,14 +7,13 @@ import { Provider } from "react-redux";
 import store from "./Redux/store/index";
 import { ChakraProvider } from '@chakra-ui/react'
 import { Auth0Provider } from "@auth0/auth0-react";
-const { REACT_APP_AUTH0_DOMAIN, REACT_APP_AUTH0_CLIENT_ID } = process.env;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     <Auth0Provider
-      domain={REACT_APP_AUTH0_DOMAIN}
-      clientId={REACT_APP_AUTH0_CLIENT_ID}
+      domain="dev-fm6k7h0d4wkymqri.us.auth0.com"
+      clientId="B5d5cWpVL4Ajg0WNck10m8xlEf60QASa"
       authorizationParams={{
         redirect_uri: window.location.origin
       }}

@@ -6,3 +6,5 @@ export const FILTER_BY_STARS = "FILTER_BY_STARS";
 export const GET_HOTEL_BY_ID = "GET_HOTEL_BY_ID";
 export const GET_ALL_SERVICES = "GET_ALL_SERVICES";
 export const GET_ALL_AMENITIES = "GET_ALL_AMENITIES";
+export const CLEAN_FILTER = "CLEAN_FILTER";
+export const CREATE_HOTEL = "CREATE_HOTEL";

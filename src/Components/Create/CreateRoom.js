@@ -126,7 +126,7 @@ export default function CreateHotelIbera() {
         confirmButtonColor: '#F27474'
       })
     } else {
-      
+      console.log("entramos al ELSE") //!!!!!!!!!!!
       if (image !== null) {
         input.image = image.url
       }
@@ -148,7 +148,7 @@ export default function CreateHotelIbera() {
         image: [],
         
       })
-      
+      console.log("SALCHICHA" , input)
     }
   }
   return (

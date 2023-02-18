@@ -2,21 +2,9 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import allActions from "../../Redux/actions";
-// #13 30.58 src/Components/HotelDetails/HotelDetails.js
-// ﻿#13 30.58   Line 7:3:  'Image' is defined but never used  no-unused-vars
-// import {
-//   Card,
-//   Image,
-//   CardBody,
-//   Heading,
-//   Stack,
-//   Text,
-//   Icon,
-//   Flex,
-//   Box,
-// } from "@chakra-ui/react";
 import {
   Card,
+  Image,
   CardBody,
   Heading,
   Stack,
@@ -25,7 +13,6 @@ import {
   Flex,
   Box,
 } from "@chakra-ui/react";
-
 import { FiWifi } from "react-icons/fi";
 import { GiTowel, GiDesk } from "react-icons/gi";
 import { MdShower, MdChair } from "react-icons/md";
