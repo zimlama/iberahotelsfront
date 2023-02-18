@@ -57,7 +57,9 @@ export default function CreateHotelIbera() {
   const  breakpoint2 = useBreakpointValue({ base: '44px', md: '60px' });
 
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+// #13 27.04 src/Components/Create/CreateHotel.js
+// ﻿#13 27.04   Line 60:9:   'navigate' is assigned a value but never used     no-unused-vars
+//   const navigate = useNavigate()
 
   const [input, setInput] = useState({
     idHotels:"",
@@ -72,11 +74,15 @@ export default function CreateHotelIbera() {
   const [errors, setErrors] = useState({})
   const validateName = /^[a-zA-Z\s]+$/
 
-  const [image, setImage] = useState(null)
+// #13 27.04 src/Components/Create/CreateHotel.js
+// ﻿#13 27.04   Line 75:17:  'setImage' is assigned a value but never used     no-unused-vars
+// ﻿#13 27.04   Line 77:9:   'uploadImage' is assigned a value but never used  no-unused-vars  
+// #13 27.04   Line 78:11:  'file' is assigned a value but never used         no-unused-vars
+//   const [image, setImage] = useState(null)
 
-  const uploadImage = (e) => {
-    const file = e.target.files[0];
-  };
+//   const uploadImage = (e) => {
+//     const file = e.target.files[0];
+//   };
 
   function validate(input) {
     const errors = {}

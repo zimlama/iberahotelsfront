@@ -11,7 +11,9 @@ function SingUp(props) {
     const DayArray = [];
     const MonthArray = [];
     const YearArray = [];
-    const appId = "1644606985997067";
+// #13 27.04 src/Components/SingUp/SingUp.js
+// ﻿#13 27.04   Line 14:11:   'appId' is assigned a value but never used  no-unused-vars
+//     const appId = "1644606985997067";
 
     for (let i = 1; i < 32; i++) {
         DayArray.push(i);
@@ -102,22 +104,27 @@ function SingUp(props) {
 
     };
 
-    var errorBirthday = "error";
-    var errorBsuccessful = "";
+// #13 27.04 src/Components/SingUp/SingUp.js
+// ﻿#13 27.04   Line 109:13:  'errorBirthday' is already defined          no-redeclare
+// ﻿#13 27.04   Line 110:13:  'errorBsuccessful' is already defined       no-redeclare
+// ﻿#13 27.04   Line 118:13:  'errorNTsuccessful' is already defined      no-redeclare
+// ﻿#13 27.04   Line 119:13:  'errorNation' is already defined            no-redeclare
+//     var errorBirthday = "error";
+//     var errorBsuccessful = "";
 
-    if (input.date_birth.length >= 8) {
-        var errorBirthday = "";
-        var errorBsuccessful = "error";
-    };
+//     if (input.date_birth.length >= 8) {
+//         var errorBirthday = "";
+//         var errorBsuccessful = "error";
+//     };
 
 
-    var errorNTsuccessful = "";
-    var errorNation = "error";
+//     var errorNTsuccessful = "";
+//     var errorNation = "error";
 
-    if (input.nationality) {
-        var errorNTsuccessful = "error";
-        var errorNation = "";
-    };
+//     if (input.nationality) {
+//         var errorNTsuccessful = "error";
+//         var errorNation = "";
+//     };
 
 
     var errorEmail = "";
