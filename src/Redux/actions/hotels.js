@@ -60,7 +60,7 @@ export function createHotel(payload) {
 console.log('input que recibo', payload)//!!!!!!!!!!!!!!!!
 try{
   console.log("ENTRE EN TRY")
-  const newHotel = await axios.post("REACT_APP_POST_HOTELS", payload)
+  const newHotel = await axios.post(REACT_APP_POST_HOTELS, payload)
   console.log('input que muestro', newHotel.data)//!!!!!!!!!!!!!!
   return dispatch({
   type: CREATE_HOTEL,
