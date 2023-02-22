@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import {
   Box,
   Card,
@@ -8,6 +9,9 @@ import {
   Button,
   Flex,
 } from "@chakra-ui/react";
+=======
+import { Box, Text, Image, ButtonGroup, Button, Grid } from "@chakra-ui/react";
+>>>>>>> 312507efe779ce053d7beb0c2f9fd97ee9bc67ae
 
 function CardServices({
   id,

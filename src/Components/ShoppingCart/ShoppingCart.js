@@ -86,9 +86,13 @@ function ShoppingCart() {
       price: filterService[0].price,
       quantity: qty,
     };
+<<<<<<< HEAD
     console.log("este es total price primero", totalPrice);
     window.localStorage.setItem("totalprice", JSON.stringify(totalPrice));
     console.log("este es total price", totalPrice);
+=======
+    window.localStorage.setItem("totalprice", JSON.stringify(totalPrice));
+>>>>>>> 312507efe779ce053d7beb0c2f9fd97ee9bc67ae
     window.localStorage.setItem("servicecart", JSON.stringify(service));
 
     setService({ ...service });
@@ -114,19 +118,30 @@ function ShoppingCart() {
   //   return storeLocal;
   // }
 
+<<<<<<< HEAD
   /*const sendPayment = {
+=======
+  const sendPayment = {
+>>>>>>> 312507efe779ce053d7beb0c2f9fd97ee9bc67ae
     //token: authUser?.accessToken, ACA VA LO DE LOG IN
     id: 1,
     item: "monto total",
     quantity: 1,
     price: 500,
+<<<<<<< HEAD
   };*/
 
   // console.log("payment aqui", sendPayment);
+=======
+  };
+
+  console.log("payment aqui", sendPayment);
+>>>>>>> 312507efe779ce053d7beb0c2f9fd97ee9bc67ae
 
   async function handlePayment() {
     //   //  setToggle(true); //hace aparecer el boton
 
+<<<<<<< HEAD
     const paymentBasic = await axios
       .post(REACT_APP_PAYMENT_CREATE, {
         id: 1,
@@ -137,6 +152,13 @@ function ShoppingCart() {
       .then((res) => (window.location.href = res.data));
     console.log(paymentBasic);
 
+=======
+    const paymentBasic = await axios.post(
+      REACT_APP_PAYMENT_CREATE,
+      sendPayment
+    );
+    console.log(paymentBasic);
+>>>>>>> 312507efe779ce053d7beb0c2f9fd97ee9bc67ae
     const script = document.createElement("script");
     const attr_data_preference = document.createAttribute("data-preference-id");
     attr_data_preference.value = paymentBasic.data.id;
