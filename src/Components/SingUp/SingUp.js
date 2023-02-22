@@ -11,9 +11,7 @@ function SingUp(props) {
     const DayArray = [];
     const MonthArray = [];
     const YearArray = [];
-// #13 27.04 src/Components/SingUp/SingUp.js
-// ﻿#13 27.04   Line 14:11:   'appId' is assigned a value but never used  no-unused-vars
-//     const appId = "1644606985997067";
+    const appId = "1644606985997067";
 
     for (let i = 1; i < 32; i++) {
         DayArray.push(i);
@@ -104,27 +102,22 @@ function SingUp(props) {
 
     };
 
-// #13 27.04 src/Components/SingUp/SingUp.js
-// ﻿#13 27.04   Line 109:13:  'errorBirthday' is already defined          no-redeclare
-// ﻿#13 27.04   Line 110:13:  'errorBsuccessful' is already defined       no-redeclare
-// ﻿#13 27.04   Line 118:13:  'errorNTsuccessful' is already defined      no-redeclare
-// ﻿#13 27.04   Line 119:13:  'errorNation' is already defined            no-redeclare
-//     var errorBirthday = "error";
-//     var errorBsuccessful = "";
+    var errorBirthday = "error";
+    var errorBsuccessful = "";
 
-//     if (input.date_birth.length >= 8) {
-//         var errorBirthday = "";
-//         var errorBsuccessful = "error";
-//     };
+    if (input.date_birth.length >= 8) {
+        var errorBirthday = "";
+        var errorBsuccessful = "error";
+    };
 
 
-//     var errorNTsuccessful = "";
-//     var errorNation = "error";
+    var errorNTsuccessful = "";
+    var errorNation = "error";
 
-//     if (input.nationality) {
-//         var errorNTsuccessful = "error";
-//         var errorNation = "";
-//     };
+    if (input.nationality) {
+        var errorNTsuccessful = "error";
+        var errorNation = "";
+    };
 
 
     var errorEmail = "";
@@ -346,7 +339,24 @@ function SingUp(props) {
 
                 <div>
 
-                    
+                    <FormControl>
+
+                        {errorBirthday && !errorBsuccessful ? (
+                            <FormHelperText>
+                                Complete Birthday.
+                            </FormHelperText>
+                        ) : (
+                            <FormErrorMessage></FormErrorMessage>
+                        )}
+                        {!errorBirthday && errorBsuccessful ? (
+                            <FormHelperText color="red" className="letter" fontWeight='bold'>
+                                Successful
+                            </FormHelperText>
+                        ) : (
+                            <FormErrorMessage></FormErrorMessage>
+                        )}
+
+                    </FormControl>
 
                 </div>
 
@@ -365,6 +375,25 @@ function SingUp(props) {
                 </div>
 
                 <div>
+
+                    <FormControl>
+
+                        {errorNation && !errorNTsuccessful ? (
+                            <FormHelperText>
+                                Complete Nationality.
+                            </FormHelperText>
+                        ) : (
+                            <FormErrorMessage></FormErrorMessage>
+                        )}
+                        {!errorNation && errorNTsuccessful ? (
+                            <FormHelperText color="red" className="letter" fontWeight='bold'>
+                                Successful
+                            </FormHelperText>
+                        ) : (
+                            <FormErrorMessage></FormErrorMessage>
+                        )}
+
+                    </FormControl>
 
                 </div>
 
@@ -401,48 +430,3 @@ function SingUp(props) {
 export default SingUp;
 
 //
-
-{/* <FormControl>
-#13 45.40 src/Components/SingUp/SingUp.js
-﻿#13 45.40   Line 351:26:  'errorBirthday' is not defined      no-undef
-﻿#13 45.40   Line 351:44:  'errorBsuccessful' is not defined   no-undef
-﻿#13 45.40   Line 358:27:  'errorBirthday' is not defined      no-undef
-﻿#13 45.40   Line 358:44:  'errorBsuccessful' is not defined   no-undef
-    {errorBirthday && !errorBsuccessful ? (
-        <FormHelperText>
-            Complete Birthday.
-        </FormHelperText>
-    ) : (
-        <FormErrorMessage></FormErrorMessage>
-    )}
-    {!errorBirthday && errorBsuccessful ? (
-        <FormHelperText color="red" className="letter" fontWeight='bold'>
-            Successful
-        </FormHelperText>
-    ) : (
-        <FormErrorMessage></FormErrorMessage>
-    )}
-</FormControl> */}
-
-
-{/* <FormControl>
-#13 45.40 src/Components/SingUp/SingUp.js
-﻿#13 45.40   Line 388:26:  'errorNation' is not defined        no-undef
-﻿#13 45.40   Line 388:42:  'errorNTsuccessful' is not defined  no-undef
-﻿#13 45.40   Line 395:27:  'errorNation' is not defined        no-undef
-﻿#13 45.40   Line 395:42:  'errorNTsuccessful' is not defined  no-undef
-    {errorNation && !errorNTsuccessful ? (
-        <FormHelperText>
-            Complete Nationality.
-        </FormHelperText>
-    ) : (
-        <FormErrorMessage></FormErrorMessage>
-    )}
-    {!errorNation && errorNTsuccessful ? (
-        <FormHelperText color="red" className="letter" fontWeight='bold'>
-            Successful
-        </FormHelperText>
-    ) : (
-        <FormErrorMessage></FormErrorMessage>
-    )}
-</FormControl> */}

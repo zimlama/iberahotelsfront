@@ -1,8 +1,24 @@
 import React from "react";
-import { Box, Button, Image, Link, HStack, Flex } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Image,
+  Link,
+  HStack,
+  Flex,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+} from "@chakra-ui/react";
 import logo from "../../images/ibera.jpeg";
 import Icon from "@chakra-ui/icon";
 import { RiLuggageCartLine } from "react-icons/ri";
+import {} from "@chakra-ui/react";
 
 function Header() {
   return (
@@ -30,12 +46,24 @@ function Header() {
 
         <Box color="teal">
           <HStack spacing="30px">
-            <Link fontSize={18} href="/destinations">
-              Destinations
-            </Link>
-            <Link fontSize={18} ml="10px" href="/reserve">
+            <Popover trigger="hover">
+              <PopoverTrigger>
+                <Link fontSize={18} href="/destinations">
+                  Destinations
+                </Link>
+              </PopoverTrigger>
+              <PopoverContent>
+                <PopoverArrow />
+
+                <PopoverHeader>
+                  <Link href="/destinations">Reserve Now!</Link>
+                </PopoverHeader>
+              </PopoverContent>
+            </Popover>
+
+            {/* <Link fontSize={18} ml="10px" href="/reserve">
               Reserve Now!
-            </Link>
+            </Link> */}
             <Link fontSize={18} href="/activities">
               Local Experiences
             </Link>

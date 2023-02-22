@@ -55,7 +55,7 @@ function SearchBar() {
       width="90%"
       marginLeft="70px"
     >
-      <Box ml="17%">
+      <Box display="flex" mx="auto" ml="17%">
         <FormControl onSubmit={(e) => handleSubmit(e)}>
           <Input
             isInvalid={isError}

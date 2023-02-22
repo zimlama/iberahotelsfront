@@ -1,6 +1,15 @@
 import React from "react";
 
-import { Image, Box, Text, Link, Button, Grid, Icon } from "@chakra-ui/react";
+import {
+  Image,
+  Box,
+  Text,
+  Link,
+  Button,
+  Grid,
+  Icon,
+  Flex,
+} from "@chakra-ui/react";
 import homeImage from "../../images/imageHome.jpg";
 import homeImage2 from "../../images/greenmountains.jpg";
 import homeImage3 from "../../images/sea.jpg";
@@ -17,30 +26,33 @@ function Home() {
         <Box>
           <Image src={homeImage} marginBottom="0px" />
         </Box>
-        <Box>
+        <Box textAlign="center">
           <Image src={homeImage2} />
           <Text
             color="white"
-            fontSize="5xl"
+            fontSize="4xl"
             position="absolute"
             top="350px"
-            left="34%"
+            left="35%"
           >
             {" "}
             Unique places in Argentina{" "}
           </Text>
           <Link paddingTop="50px" href="/reserve">
-            <Button
-              top="420px"
-              colorScheme="teal"
-              left="46%"
-              backgroundColor="white"
-              variant="outline"
-              size="lg"
-              position="absolute"
-            >
-              Learn More
-            </Button>
+            <Flex justifyContent="center">
+              <Button
+                textAlign="center"
+                top="400px"
+                colorScheme="teal"
+                left="46%"
+                backgroundColor="white"
+                variant="outline"
+                size="lg"
+                position="absolute"
+              >
+                Learn More
+              </Button>
+            </Flex>
           </Link>
         </Box>
         <Box>

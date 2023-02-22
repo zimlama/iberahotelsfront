@@ -1,7 +1,4 @@
-// #13 27.04 src/Components/Destinations/Destinations.js
-// ﻿#13 27.04   Line 1:27:  'useState' is defined but never used  no-unused-vars
-// import React, { useEffect,useState } from "react";
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import CardHotel from "../CardHotel/CardHotel.js";
