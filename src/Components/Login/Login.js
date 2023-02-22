@@ -6,7 +6,7 @@ import {
 import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons';
-import axios from 'axios';
+// import axios from 'axios';
 
 function Login(props) {
 

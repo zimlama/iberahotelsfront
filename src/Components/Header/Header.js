@@ -1,4 +1,21 @@
 import React from "react";
+// import {
+//   Box,
+//   Button,
+//   Image,
+//   Link,
+//   HStack,
+//   Flex,
+//   Popover,
+//   PopoverTrigger,
+//   PopoverContent,
+//   PopoverHeader,
+//   PopoverBody,
+//   PopoverFooter,
+//   PopoverArrow,
+//   PopoverCloseButton,
+// } from "@chakra-ui/react";
+
 import {
   Box,
   Button,
@@ -10,10 +27,7 @@ import {
   PopoverTrigger,
   PopoverContent,
   PopoverHeader,
-  PopoverBody,
-  PopoverFooter,
   PopoverArrow,
-  PopoverCloseButton,
 } from "@chakra-ui/react";
 import logo from "../../images/ibera.jpeg";
 import Icon from "@chakra-ui/icon";

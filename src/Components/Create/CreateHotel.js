@@ -25,7 +25,8 @@ import {
 
 import { createHotel } from "../../Redux/actions/hotels";
 import { useDispatch } from 'react-redux'
-import { Link, useNavigate } from "react-router-dom";
+// import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Swal from 'sweetalert2'
 
 const avatars = [
@@ -57,7 +58,7 @@ export default function CreateHotelIbera() {
   const  breakpoint2 = useBreakpointValue({ base: '44px', md: '60px' });
 
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const [input, setInput] = useState({
     idHotels:"",
@@ -72,11 +73,13 @@ export default function CreateHotelIbera() {
   const [errors, setErrors] = useState({})
   const validateName = /^[a-zA-Z\s]+$/
 
-  const [image, setImage] = useState(null)
 
-  const uploadImage = (e) => {
-    const file = e.target.files[0];
-  };
+  // const [image, setImage] = useState(null)
+  const [image] = useState(null)
+
+  // const uploadImage = (e) => {
+  //   const file = e.target.files[0];
+  // };
 
   function validate(input) {
     const errors = {}

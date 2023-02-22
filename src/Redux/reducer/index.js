@@ -1,5 +1,18 @@
+// import {
+//   //GET_HOTELS,
+//   CITIES,
+//   FILTER_BY_CITY,
+//   FILTER_BY_STARS,
+//   GET_ALL_HOTELS,
+//   GET_HOTEL_BY_ID,
+//   GET_ALL_SERVICES,
+//   GET_ALL_AMENITIES,
+//   CLEAN_FILTER,
+//   SORT_PRICE,
+//   CREATE_HOTEL,
+// } from "../actions-types/index";
+
 import {
-  //GET_HOTELS,
   CITIES,
   FILTER_BY_CITY,
   FILTER_BY_STARS,
@@ -8,7 +21,6 @@ import {
   GET_ALL_SERVICES,
   GET_ALL_AMENITIES,
   CLEAN_FILTER,
-  SORT_PRICE,
   CREATE_HOTEL,
 } from "../actions-types/index";
 
@@ -63,7 +75,7 @@ export default function rootReducer(state = initialState, action) {
       //     return e.stars === parseInt(action.payload);
       //   });
       // }
-      let filterByStar = state.allHotels;
+      // let filterByStar = state.allHotels;
       let filterStar = 
       action.payload === ""
       ?state.hotels

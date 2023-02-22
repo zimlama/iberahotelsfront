@@ -86,7 +86,7 @@ function ShoppingCart() {
       price: filterService[0].price,
       quantity: qty,
     };
-    console.log("este es total price primero", totalPrice);
+    
     window.localStorage.setItem("totalprice", JSON.stringify(totalPrice));
     console.log("este es total price", totalPrice);
     window.localStorage.setItem("servicecart", JSON.stringify(service));
@@ -114,6 +114,7 @@ function ShoppingCart() {
   //   return storeLocal;
   // }
 
+
   /*const sendPayment = {
     //token: authUser?.accessToken, ACA VA LO DE LOG IN
     id: 1,
@@ -127,6 +128,7 @@ function ShoppingCart() {
 
   async function handlePayment() {
     //   //  setToggle(true); //hace aparecer el boton
+
     const paymentBasic = await axios
       .post(REACT_APP_PAYMENT_CREATE, {
         id: 1,
