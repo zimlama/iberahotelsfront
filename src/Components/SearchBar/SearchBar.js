@@ -30,7 +30,10 @@ function SearchBar() {
   }, [dispatch]);
 
   const hotels = useSelector((state) => state.hotels);
-  const [destination, setDestination] = useState("");
+  // #13 50.71 src/Components/SearchBar/SearchBar.js
+  // ﻿#13 50.71   Line 33:23:  'setDestination' is assigned a value but never used  no-unused-vars
+  // const [destination, setDestination] = useState("");
+  const [destination] = useState("");
   const [inDate, setInDate] = useState("");
   const [outDate, setOutDate] = useState("");
   const [beds, setBeds] = useState("");
