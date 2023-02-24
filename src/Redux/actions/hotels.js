@@ -8,6 +8,7 @@ import {
   GET_HOTEL_BY_ID,
   CLEAN_FILTER,
   CREATE_HOTEL,
+  GET_NAME_CITIES,
 } from "../actions-types/index";
 
 const { REACT_APP_GET_ALL_HOTELS, REACT_APP_POST_HOTELS } = process.env;
@@ -68,6 +69,21 @@ export function createHotel(payload) {
       });
     } catch (err) {
       console.log("ROMPIO", err);
+    }
+  };
+}
+
+export function getCity(payload) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.get(`${REACT_APP_GET_ALL_HOTELS}?city=${payload}`);
+      console.log("PAPANATA", json);
+      return dispatch({
+        type: GET_NAME_CITIES,
+        payload: json.data,
+      });
+    } catch (err) {
+      console.log(err);
     }
   };
 }

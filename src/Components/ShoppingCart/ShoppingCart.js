@@ -15,6 +15,7 @@ import CardServices from "../CardServices/CardServices";
 import { FaBed } from "react-icons/fa";
 import { FiArrowRight } from "react-icons/fi";
 import axios from "axios";
+import { v4 } from "uuid";
 const { REACT_APP_PAYMENT_CREATE, REACT_APP_MERCADOPAGO_CHECKOUT } =
   process.env;
 const { getServices } = allActions;
@@ -38,7 +39,6 @@ function ShoppingCart() {
     dispatch(getServices());
   }, [dispatch]);
 
-  console.log("aca esta el estado price", totalPrice);
   function handleResetCart() {
     window.localStorage.setItem("servicecart", JSON.stringify({}));
     ///VER ACA ==> un localstorage para los precios de services
@@ -74,10 +74,11 @@ function ShoppingCart() {
 
     //window.localStorage.setItem("totalprice"); //precio room y servicios
   }
-  function handleAddToCart(id) {
-    const filterService = services.filter((e) => e.id === id);
-    setTotalPrice((total) => (total += parseInt(filterService[0].price)));
+  async function handleAddToCart(id) {
+    const filterService = await services.filter((e) => e.id === id);
+    const total = totalPrice + parseInt(filterService[0].price);
 
+    setTotalPrice(total);
     let qty = service[`${id}`]?.quantity ? (service[`${id}`].quantity += 1) : 1;
 
     service[id] = {
@@ -86,14 +87,12 @@ function ShoppingCart() {
       price: filterService[0].price,
       quantity: qty,
     };
-    
-    window.localStorage.setItem("totalprice", JSON.stringify(totalPrice));
-    console.log("este es total price", totalPrice);
+
     window.localStorage.setItem("servicecart", JSON.stringify(service));
 
     setService({ ...service });
+    window.localStorage.setItem("totalprice", JSON.stringify(total));
   }
-  console.log("aca esta service", service);
 
   // function adapt() {
   //   var storeLocal = [];
@@ -114,7 +113,6 @@ function ShoppingCart() {
   //   return storeLocal;
   // }
 
-
   /*const sendPayment = {
     //token: authUser?.accessToken, ACA VA LO DE LOG IN
     id: 1,
@@ -124,7 +122,6 @@ function ShoppingCart() {
   };*/
 
   // console.log("payment aqui", sendPayment);
-
 
   async function handlePayment() {
     //   //  setToggle(true); //hace aparecer el boton
@@ -175,31 +172,42 @@ function ShoppingCart() {
           borderRadius="lg"
           ml="20px"
         >
-          <Text mt="30px" color="teal" fontSize="2xl" mb="30px">
-            <Text>
-              <Icon ml="5px" mr="40px" as={FaBed} boxSize={5}></Icon>
-              {local.name}
-            </Text>
-          </Text>
-          <Text ml="45%" as="i" fontSize="xl" color="black">
+          <Box mt="30px" color="teal" fontSize="2xl" mb="30px">
+            <Icon ml="5px" mr="40px" as={FaBed} boxSize={5}></Icon>
+            <Text>{local.name}</Text>
+          </Box>
+          <Text ml="1%" mr="20%" as="i" fontSize="xl" color="black">
             {" "}
-            {local.quantity} days - Room amount per day ${local.price}
-            <Text>
+            Room amount per day ${local.price > 0 ? local.price : 0}
+            <Text mt="20px">
               Total price for {local.quantity} days - ${" "}
-              {local.price * local.quantity}
+              {local.price * local.quantity > 0
+                ? local.price * local.quantity
+                : 0}
             </Text>
           </Text>
           <Divider color="teal" border="solid" borderWidth="1px" mt="10px" />
         </Box>
-        <Box>
-          <Text> Add Special Services </Text>
+        <Box mt="20px">
+          <Text as="i" fontSize="3xl">
+            {" "}
+            Add Special Services{" "}
+          </Text>
 
-          <Button color="teal " onClick={handleResetCart}>
-            Remove all
+          <Button
+            color="teal "
+            ml="250px"
+            onClick={handleResetCart}
+            size="sm"
+            mt="20px"
+            mb="20px"
+          >
+            Delete All Items
           </Button>
           {services &&
             services.map((ser) => (
               <CardServices
+                key={v4()}
                 id={ser.id}
                 name={ser.name}
                 image={ser.image}
@@ -215,20 +223,24 @@ function ShoppingCart() {
             <Flex display="initial">
               <Text mt="30px">Room for {local.quantity} days </Text>
 
-              <Text ml="150px">$ {local.price * local.quantity}</Text>
+              <Text ml="150px">
+                ${" "}
+                {local.price * local.quantity > 1
+                  ? local.price * local.quantity
+                  : 0}
+              </Text>
 
               <Text mt="20px"></Text>
             </Flex>
             {service &&
               Object.keys(service).map((e) => {
                 return (
-                  <Box>
-                    {" "}
+                  <Box key={v4()}>
                     ({service[e].quantity} item) - {service[e].name} $
                     {service[e].quantity * service[e].price}
                   </Box>
                 );
-              })}{" "}
+              })}
             <Divider color="teal" border="solid" borderWidth="1px" mt="20px" />
             <Text mt="20px">Total amount ${totalPrice}</Text>
             <Button mt="40px" color="teal" onClick={handlePayment}>

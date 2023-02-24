@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Input,
   Button,
@@ -10,14 +11,85 @@ import {
   FormHelperText,
   FormErrorMessage,
 } from "@chakra-ui/react";
+// import {
+//   AutoComplete,
+//   AutoCompleteInput,
+//   AutoCompleteItem,
+//   AutoCompleteList,
+// } from "@choc-ui/chakra-autocomplete";
+
 import "./searchbar.css";
 import { FiArrowDown } from "react-icons/fi";
+import allActions from "../../Redux/actions";
+const { getAllHotels, getCity } = allActions;
 
 function SearchBar() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllHotels());
+  }, [dispatch]);
+
+  const hotels = useSelector((state) => state.hotels);
   const [destination, setDestination] = useState("");
   const [inDate, setInDate] = useState("");
   const [outDate, setOutDate] = useState("");
   const [beds, setBeds] = useState("");
+  const [city, setCity] = useState("");
+  // src/Components/SearchBar/SearchBar.js
+  // Line 38:10:  'newUser' is assigned a value but never used        no-unused-vars
+  // Line 38:19:  'setNewUser' is assigned a value but never used     no-unused-vars
+  // Line 39:10:  'alert' is assigned a value but never used          no-unused-vars
+  // Line 39:17:  'setAlert' is assigned a value but never used       no-unused-vars
+  // Line 40:10:  'state2' is assigned a value but never used         no-unused-vars
+  // Line 40:18:  'setState2' is assigned a value but never used      no-unused-vars
+  // const [newUser, setNewUser] = useState("");
+  // const [alert, setAlert] = useState("");
+  // const [state2, setState2] = useState([]);
+
+  function handleImputChange(e) {
+    e.preventDefault();
+    setCity(e.target.value);
+  }
+
+  function buttonSubmit(e) {
+    e.preventDefault();
+    dispatch(getCity(city));
+    console.log(hotels, "TUVIEJA");
+    setCity("");
+  }
+
+  // function getSuggestions(value) {
+  //   const inputValue = value.trim().toLowerCase();
+  //   const inputLength = inputValue.length;
+
+  //   return inputLength === 0
+  //     ? []
+  //     : hotels.filter(
+  //         (hotel) =>
+  //           hotel.city.toLowerCase().slice(0, inputLength) === inputValue
+  //       );
+  // }
+
+  // function handleInputChange(value) {
+  //   setCity(value);
+  //   setState2(getSuggestions(value));
+  // }
+
+  //!!!!!!
+  //   const handleFilter = (e) => {
+
+  //     e.preventDefault();
+
+  //     const inputFilter = setCity(e.target.value);
+  //     console.log(inputFilter, "LUCHOOOO")
+  //     setState2([...hotels].filter((u) => {
+  //       return u.city.toLowerCase().includes(inputFilter.value.toLowerCase())
+  //   }))
+
+  //   setAlert("");
+
+  // };
+  //!!!!!
 
   const today = new Date().toISOString().split("T")[0];
 
@@ -25,9 +97,11 @@ function SearchBar() {
   const onlyLettersCheck = (input) => {
     return onlyLetters.test(input);
   };
-  function handleInputDestination(e) {
-    setDestination(e.target.value);
-  }
+  // src/Components/SearchBar/SearchBar.js
+  // Line 93:12:  'handleInputDestination' is defined but never used  no-unused-vars
+  // function handleInputDestination(e) {
+  //   setDestination(e.target.value);
+  // }
 
   function handleInputCheckIn(e) {
     setInDate(e.target.value);
@@ -57,6 +131,39 @@ function SearchBar() {
     >
       <Box display="flex" mx="auto" ml="17%">
         <FormControl onSubmit={(e) => handleSubmit(e)}>
+          {/* <AutoCompleteInput
+  value={city}
+  onChange={(value) => handleInputChange(value)}
+  width="500px"
+  backgroundColor="white"
+  placeholder="Destination"
+>
+  {({ getInputProps, getDropdownProps }) => (
+    <>
+      <Input
+        {...getInputProps()}
+        isInvalid={isError}
+        mr="300px"
+        id="input-filter"
+      />
+      <Stack {...getDropdownProps()} maxHeight="200px" overflowY="auto">
+        {state2.map((hotel, index) => (
+          <Box
+            key={index}
+            p="2"
+            bg={index % 2 === 0 ? "gray.100" : "white"}
+            _hover={{ bg: "gray.200", cursor: "pointer" }}
+            onClick={() => handleInputChange(hotel.city)}
+          >
+            {hotel.city}
+          </Box>
+        ))}
+      </Stack>
+    </>
+  )}
+</AutoCompleteInput>
+          */}
+
           <Input
             isInvalid={isError}
             mr="300px"
@@ -64,9 +171,23 @@ function SearchBar() {
             backgroundColor="white"
             placeHolder="Destination"
             type="text"
-            value={destination}
-            onChange={handleInputDestination}
+            value={city}
+            id="input-filter"
+            onChange={handleImputChange}
           />
+
+          {/* <Stack>
+{  
+  state2 && state2.map((u) => {
+      return (
+          <button id="button-filter" onClick={handleFilter} value={u.city}>
+              {u.city}
+          </button>
+      )
+  })}
+  
+  </Stack> */}
+
           {isError ? (
             <FormHelperText mr="600px" mt="2px" color="black">
               Select a destination, please
@@ -123,6 +244,7 @@ function SearchBar() {
                 colorScheme="teal"
                 variant="outline"
                 type="submit"
+                onClick={(e) => buttonSubmit(e)}
               >
                 Check Availability
               </Button>

@@ -62,16 +62,25 @@ function DetailsRoom({
   function handleSelect(e) {
     setDayqty(e.target.value);
   }
+  const bed_icons = [];
+  for (let i = 0; i < bed_quantity; i++) {
+    bed_icons.push(<Icon key={i} as={IoBedSharp} />);
+  }
+
   return (
-    <Box mt="20px" padding="20px">
+    <Box mt="20px" padding="20px" boxSize="">
       <Card
         direction={{ base: "column", sm: "row" }}
         overflow="hidden"
         variant="outline"
       >
         <Image
-          objectFit="cover"
-          maxW={{ base: "80%", sm: "150px" }}
+          objectFit="fill"
+          maxW={{ base: "100%", sm: "450px" }}
+          mb="40px"
+          mt="30px"
+          padding="20px"
+          ml="10px"
           alt="hotelIbera"
           src={image[0]}
         />
@@ -94,8 +103,7 @@ function DetailsRoom({
             </Heading>
 
             <Text fontSize="xl" py="12" mb="50px">
-              {bed_quantity} beds
-              <Icon ml="30px" as={IoBedSharp}></Icon>
+              Beds quantity <Text color="teal">{bed_icons}</Text>
               <Text mt="10px" fontSize="md">
                 {description}
               </Text>
