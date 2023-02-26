@@ -26,9 +26,6 @@ function Footer() {
               <Icon mr="10px" fontSize="3em" as={RiFacebookCircleFill}></Icon>
             </Link>
             <Link href="#">
-              <Icon mr="10px" fontSize="3em" as={RiFacebookCircleFill}></Icon>
-            </Link>
-            <Link href="#">
               <Icon mr="10px" fontSize="3em" as={RiTwitterFill}></Icon>
             </Link>
             <Link href="#">

@@ -41,7 +41,8 @@ import {
   PopoverTrigger,
   PopoverContent,
   PopoverHeader,
-  PopoverArrow
+
+  PopoverArrow,
 } from "@chakra-ui/react";
 import logo from "../../images/ibera.jpeg";
 import Icon from "@chakra-ui/icon";

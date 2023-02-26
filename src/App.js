@@ -8,7 +8,7 @@ import Footer from "./Components/Footer/Footer";
 import Destinations from "./Components/Destinations/Destinations";
 import DeleteUser from "./Components/DeleteUser/DeleteUser";
 import HotelDetails from "../src/Components/HotelDetails/HotelDetails.js";
-
+import AboutUs from "./Components/AboutUs/AboutUs";
 import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
 
 import Login from "./Components/Login/Login";
@@ -25,6 +25,7 @@ function App() {
           <Route exact path="/delete" element={<DeleteUser />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/hotels/:id" element={<HotelDetails />} />
+          <Route exact path="/aboutus" element={<AboutUs />} />
           {/* <Route exact path="/activities" element={<Reservations/>}/> */}
           <Route exact path="/shoppingcart" element={<ShoppingCart />} />
         </Routes>

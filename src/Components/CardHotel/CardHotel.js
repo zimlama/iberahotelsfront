@@ -11,22 +11,38 @@ import {
   Divider,
   Box,
   HStack,
+  Icon,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { RiStarFill } from "react-icons/ri";
 
 function CardHotel({ id, name, city, img, stars }) {
+  const star = [];
+  for (let i = 0; i < stars; i++) {
+    star.push(<Icon key={i} as={RiStarFill} />);
+  }
   return (
     <HStack display="inline-flex">
       <Box ml="20px" mb="19px">
         <Card maxW="sm">
           <CardBody>
-            <Image src={img} alt="hotelImg" borderRadius="lg" />
+            <Image
+              src={img}
+              alt="hotelImg"
+              borderRadius="lg"
+              width="100%"
+              height="200px"
+              objectFit="cover"
+            />
             <Stack mt="6" spacing="3">
               <Heading color="teal" size="md">
                 {city}
               </Heading>
               <Text>{name}</Text>
-              <Text>This is a {stars} stars hotel</Text>
+              <Text fontSize="2em" color="teal">
+                {" "}
+                {star}{" "}
+              </Text>
             </Stack>
           </CardBody>
           <Divider />

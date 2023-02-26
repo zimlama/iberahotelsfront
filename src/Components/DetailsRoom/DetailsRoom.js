@@ -1,17 +1,3 @@
-// import {
-//   Card,
-//   CardBody,
-//   Image,
-//   Stack,
-//   Text,
-//   Heading,
-//   CardFooter,
-//   Button,
-//   Link,
-//   Icon,
-//   Box,
-//   Select,
-// } from "@chakra-ui/react";
 import {
   Card,
   CardBody,

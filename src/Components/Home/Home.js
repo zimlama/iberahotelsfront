@@ -17,8 +17,6 @@ import wifiImg from "../../images/wifi.jpg";
 import trekking from "../../images/trekking.jpg";
 import { FcWiFiLogo } from "react-icons/fc";
 
-// import SearchBar from "../SearchBar/SearchBar";;
-
 function Home() {
   return (
     <div className="main">
@@ -28,17 +26,20 @@ function Home() {
         </Box>
         <Box textAlign="center">
           <Image src={homeImage2} />
-          <Text
-            color="white"
-            fontSize="4xl"
-            position="absolute"
-            top="350px"
-            left="35%"
-          >
-            {" "}
-            Unique places in Argentina{" "}
-          </Text>
-          <Link paddingTop="50px" href="/reserve">
+          <Box>
+            <Text
+              color="white"
+              fontSize="4xl"
+              position="absolute"
+              top="350px"
+              left="35%"
+              textAlign="center"
+            >
+              {" "}
+              Unique places in Argentina{" "}
+            </Text>
+          </Box>
+          <Link paddingTop="50px" href="/destinations">
             <Flex justifyContent="center">
               <Button
                 textAlign="center"
@@ -134,16 +135,23 @@ function Home() {
       />
       <Grid templateColumns="1fr 1fr">
         <Box marginTop="90px">
-          <Image borderRadius="8px" boxSize="85%" src={wifiImg} ml="40px" />
+          <Image
+            borderRadius="8px"
+            boxSize="80%"
+            src={wifiImg}
+            ml="100px"
+            width="70%"
+          />
         </Box>
         <Box marginTop="120px" mr="150px">
-          <Text marginTop="60px" fontSize="3xl" fontWeight="bold" color="teal">
-            Stay connected!
+          <Text marginTop="40px" fontSize="3xl" fontWeight="bold" color="teal">
+            Co-Working Spot!
           </Text>
           <Icon as={FcWiFiLogo} boxSize={12} />
           <Text marginTop="10px" fontSize="2xl">
             {" "}
-            We offer high-speed Wi-Fi in all our hotels and co-working spot{" "}
+            We offer high-speed Wi-Fi in all our hotels and exclusive and comfy
+            co-workins spot{" "}
           </Text>
         </Box>
       </Grid>
@@ -159,7 +167,7 @@ function Home() {
         <Box marginTop="85px">
           <Link href="/activities">
             <Text
-              marginTop="100px"
+              marginTop="70px"
               fontSize="3xl"
               fontWeight="bold"
               color="teal"
@@ -167,31 +175,25 @@ function Home() {
               Local Experiences
             </Text>
           </Link>
-          <Text ml="40px" marginTop="40px" fontSize="2xl">
+          <Text ml="40px" marginTop="30px" fontSize="2xl">
             {" "}
             We have designed all the activities adapting exclusively to the
             needs of our guests. Walking tours, Horse riding, Trekkings and much
             more!{" "}
           </Text>
           <Link href="/activities">
-            <Button mt="30px" colorScheme="teal" variant="solid" size="md">
+            <Button mt="20px" colorScheme="teal" variant="solid" size="md">
               {" "}
               See all activities
             </Button>
           </Link>
         </Box>
 
-        <Box mt="70px" mr="30px">
-          <Image src={trekking} borderRadius="8px" boxSize="85%" ml="40px" />
+        <Box mt="70px" mr="10px">
+          <Image src={trekking} borderRadius="8px" boxSize="70%" ml="80px" />
         </Box>
       </Grid>
-      <Box
-        height="2px"
-        width="50%"
-        ml="25%"
-        backgroundColor="teal"
-        marginTop="3px"
-      />
+      <Box height="2px" width="50%" ml="25%" backgroundColor="teal" />
 
       <Box mb="40px">
         <Text ml="40px" marginTop="40px" fontSize="3xl">
@@ -213,7 +215,7 @@ function Home() {
       <Grid templateColumns="1fr 1fr" mt="30px">
         <Box>
           <Text fontSize="3xl" color="teal" mt="40px">
-            Exclusive offers, New local activities{" "}
+            Exclusive offers{" "}
           </Text>
         </Box>
         <Box mt="40px">
