@@ -54,7 +54,9 @@ function SearchBar() {
   // #13 58.78 src/Components/SearchBar/SearchBar.js
   // ﻿#13 58.78   Line 39:10:   'beds' is assigned a value but never used    no-unused-vars
   // const [beds, setBeds] = useState("");
-  const [setBeds] = useState("");
+  // #13 45.96 src/Components/SearchBar/SearchBar.js
+  // ﻿#13 45.96   Line 57:10:  'setBeds' is assigned a value but never used  no-unused-vars
+  // const [setBeds] = useState("");
   const [city, setCity] = useState("");
   // src/Components/SearchBar/SearchBar.js
   // Line 38:10:  'newUser' is assigned a value but never used        no-unused-vars
