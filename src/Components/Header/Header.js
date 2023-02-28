@@ -70,10 +70,6 @@ function Header() {
     var name = user.name;
     var email = user.email;
 
-    console.log("user", user);
-    console.log("name", name);
-    console.log("email", email);
-
     axios
       .get("http://localhost:3010/users")
       .then((res) => {
@@ -81,7 +77,6 @@ function Header() {
         status = res.data.find((u) => {
           return u.email === user.email;
         });
-        console.log("status", status);
 
         if (status.privilige === true) {
           setAdmin("admin");
@@ -94,6 +89,10 @@ function Header() {
       })
       .catch((err) => console.log(err));
   }
+
+  const buttonProfile = (e) => {
+    window.location.href = "http://localhost:3000/profile";
+  };
 
   return (
     <div>
@@ -159,32 +158,44 @@ function Header() {
             )}
 
             {isAuthenticated && admin ? (
-              <Link color="red" fontSize={18} href="/createHotel">
-                Create Hotel{" "}
-              </Link>
+
+              <Popover trigger="hover">
+
+                <PopoverTrigger>
+                  <Link color="red" fontSize={18}>
+                    Admin{" "}
+                  </Link>
+                </PopoverTrigger>
+
+                <PopoverContent>
+
+                  <PopoverHeader>
+                    <Link color="red" fontSize={18} href="/delete">
+                      Delete / Disable{" "}
+                    </Link>
+                  </PopoverHeader>
+
+                  <PopoverHeader>
+                    <Link color="red" fontSize={18} href="/createHotel">
+                      Create{" "}
+                    </Link>
+                  </PopoverHeader>
+
+                  <PopoverHeader>
+                    <Link color="red" fontSize={18} href="/modify">
+                      Modify{" "}
+                    </Link>
+                  </PopoverHeader>
+
+                </PopoverContent>
+
+              </Popover>
+
             ) : (
               <div></div>
             )}
 
-            {isAuthenticated && admin ? (
-              <Link color="red" fontSize={18} href="/delete">
-                Delete User{" "}
-              </Link>
-            ) : (
-              <div></div>
-            )}
-
-            {isAuthenticated ? (
-              <Button
-                colorScheme="teal"
-                variant="solid"
-                onClick={() =>
-                  logout({ logoutParams: { returnTo: window.location.origin } })
-                }
-              >
-                Logout
-              </Button>
-            ) : (
+            {!isAuthenticated ? (
               <Button
                 colorScheme="teal"
                 variant="solid"
@@ -192,15 +203,51 @@ function Header() {
               >
                 Login
               </Button>
-            )}
-
-            {isAuthenticated ? (
-              <Button colorScheme="teal" variant="outline">
-                {name}
-              </Button>
             ) : (
               <div></div>
             )}
+
+
+            {isAuthenticated ? (
+
+              <Popover trigger="hover">
+
+                <PopoverTrigger>
+
+                  <Button colorScheme="teal" variant="outline">
+                    {name}
+                  </Button>
+
+                </PopoverTrigger>
+
+                <PopoverContent>
+
+                  <PopoverHeader>
+                    <Link color="teal" fontSize={18} href="/profile">
+                      My profile{" "}
+                    </Link>
+                  </PopoverHeader>
+
+                  <PopoverHeader>
+                    <Button
+                      colorScheme="teal"
+                      variant="solid"
+                      onClick={() =>
+                        logout({ logoutParams: { returnTo: window.location.origin } })
+                      }>
+                      Logout
+                    </Button>
+                  </PopoverHeader>
+
+                </PopoverContent>
+
+              </Popover>
+
+
+            ) : (
+              <div></div>
+            )}
+
           </HStack>
         </Box>
       </Flex>
@@ -209,3 +256,4 @@ function Header() {
 }
 
 export default Header;
+
