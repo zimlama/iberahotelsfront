@@ -106,20 +106,43 @@ function Profile() {
 
         const HandleModify = (e) => {
 
+            // #13 31.41 src/Components/Profile.js
+            // ﻿#13 31.41   Line 113:17:  'errorBirthday' is not defined      no-undef
+            // ﻿#13 31.41   Line 114:17:  'errorBsuccessful' is not defined   no-undef
+            // ﻿#13 31.41   Line 121:17:  'errorNation' is not defined        no-undef
+            // ﻿#13 31.41   Line 122:17:  'errorNTsuccessful' is not defined  no-undef
+            // if (buttonModify === "") {
+            //     setButtonModify("modify")
+            // } else {
+            //     setButtonModify("")
+            //     errorBirthday = "";
+            //     errorBsuccessful = "";
+            //     errorName = "";
+            //     errorNsuccessful = "";
+            //     errorLastName = "";
+            //     errorLNsuccessful = "";
+            //     errorMobile = "";
+            //     errorMsuccessful = "";
+            //     errorNation = "";
+            //     errorNTsuccessful = "";
+            //     setInput({
+            //         first_name: "",
+            //         last_name: "",
+            //         date_birth: "",
+            //         mobile: "",
+            //         nationality: ""
+            //     })
+            // }
             if (buttonModify === "") {
                 setButtonModify("modify")
             } else {
                 setButtonModify("")
-                errorBirthday = "";
-                errorBsuccessful = "";
                 errorName = "";
                 errorNsuccessful = "";
                 errorLastName = "";
                 errorLNsuccessful = "";
                 errorMobile = "";
                 errorMsuccessful = "";
-                errorNation = "";
-                errorNTsuccessful = "";
                 setInput({
                     first_name: "",
                     last_name: "",
