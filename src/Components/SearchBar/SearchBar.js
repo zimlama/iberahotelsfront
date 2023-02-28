@@ -224,21 +224,6 @@ function SearchBar() {
               ></input>
             </Box>
 
-            <Select
-              width="50%"
-              color="black"
-              bgColor="white"
-              mr="10px"
-              mt="32px"
-              rightIcon={FiArrowDown}
-              value={beds}
-              onChange={handleInputBeds}
-            >
-              <option value="option1">1 bed</option>
-              <option value="option2">2 beds</option>
-              <option value="option3">3 beds</option>
-              <option value="option4">4 beds</option>
-            </Select>
             <Box>
               <Button
                 mr="160px"

@@ -1,51 +1,40 @@
 import React from "react";
 import { Box, Button } from "@chakra-ui/react";
 
-function Pages({
-  currentHotels,
-  page,
-  setHotelsPerPage,
-  hotelsPerPage,
-  currentPage,
-  setCurrentPage,
-}) {
-  const pageNumbers = [];
+function Pages({ page, hotelsPerPage, hotels, currentPage }) {
+  let pageNumbers = [];
 
-  for (let i = 1; i <= Math.ceil(currentHotels / hotelsPerPage) && i < 6; i++) {
+  for (let i = 1; i <= Math.ceil(hotels.length / hotelsPerPage); i++) {
     pageNumbers.push(i);
   }
 
   function handleNext() {
-    setCurrentPage((x) => x + 1);
+    pageNumbers.length - 1 === currentPage ? page(1) : page((x) => x + 1);
   }
+
   function handlePrev() {
-    setCurrentPage((x) => x - 1);
-    if (currentPage === 1) {
-      setHotelsPerPage(10);
-      setCurrentPage(1);
-      return;
-    }
+    currentPage === 1 ? page(pageNumbers.length - 1) : page((x) => x - 1);
   }
+
   return (
     <Box mt="20px">
       <Button
         mr="5px"
-        colorScheme="teal"
-        backgroundColor="teal"
-        size="md"
+        color="teal"
+        backgroundColor="white"
+        size="sm"
         onClick={() => handleNext()}
       >
         {" "}
         Prev
       </Button>
-      {pageNumbers.map((number) => {
+      {pageNumbers?.map((number) => {
         return (
           <Button
             color="teal"
-            border="solid"
             borderColor="teal"
             backgroundColor="white"
-            size="md"
+            size="sm"
             onClick={() => page(number)}
           >
             {number}
@@ -54,9 +43,9 @@ function Pages({
       })}
       <Button
         ml="5px"
-        colorScheme="teal"
-        backgroundColor="teal"
-        size="md"
+        color="teal"
+        backgroundColor="white"
+        size="sm"
         onClick={() => handlePrev()}
       >
         {" "}

@@ -1,4 +1,3 @@
-// import React, { useEffect,useState } from "react";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -21,12 +20,14 @@ function Destinations() {
   });
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [hotelsPerPage, setHotelsPerPage] = useState(8);
+  const [hotelsPerPage, setHotelsPerPage] = useState(6);
 
   const indexOfLastHotel = currentPage * hotelsPerPage;
   const indexOfFirstHotel = indexOfLastHotel - hotelsPerPage;
 
-  const currentHotels = hotels.slice(indexOfFirstHotel, indexOfLastHotel);
+  const currentHotels = hotels?.slice(indexOfFirstHotel, indexOfLastHotel);
+
+  console.log(currentHotels);
 
   const page = (number) => {
     setCurrentPage(number);
@@ -109,12 +110,10 @@ function Destinations() {
           );
         })}
       <Pages
-        currentHotels={currentHotels.length}
         page={page}
-        setHotelsPerPage={setHotelsPerPage}
         hotelsPerPage={hotelsPerPage}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
+        hotels={hotels}
+        currentPage={currentHotels}
       />
     </div>
   );
