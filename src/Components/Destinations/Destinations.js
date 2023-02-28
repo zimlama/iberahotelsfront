@@ -20,7 +20,10 @@ function Destinations() {
   });
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [hotelsPerPage, setHotelsPerPage] = useState(6);
+  // #13 58.78 src/Components/Destinations/Destinations.js
+  // ﻿#13 58.78   Line 23:25:  'setHotelsPerPage' is assigned a value but never used  no-unused-vars
+  // const [hotelsPerPage, setHotelsPerPage] = useState(6);
+  const [hotelsPerPage] = useState(6);
 
   const indexOfLastHotel = currentPage * hotelsPerPage;
   const indexOfFirstHotel = indexOfLastHotel - hotelsPerPage;

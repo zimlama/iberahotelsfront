@@ -16,7 +16,10 @@ function Modify() {
     };
 
     const [render, setRender] = useState("");
-    const { user, isAuthenticated, isLoading } = useAuth0();
+    // #13 58.78 src/Components/ModifyAdmin.js
+    // ﻿#13 58.78   Line 19:36:   'isLoading' is assigned a value but never used  no-unused-vars
+    // const { user, isAuthenticated, isLoading } = useAuth0();
+    const { user, isAuthenticated } = useAuth0();
     const [errorSubmit, setErrorSubmit] = useState("");
 
     const hotels = [];
@@ -845,17 +848,19 @@ function Modify() {
 
         };
 
+        // #13 58.78 src/Components/ModifyAdmin.js
+        // ﻿#13 58.78   Line 849:13:  'errorName' is already defined                  no-redeclare
+        // ﻿#13 58.78   Line 850:13:  'errorNsuccessful' is already defined           no-redeclare
+        // var errorName = "";
+        // var errorNsuccessful = "";
 
-        var errorName = "";
-        var errorNsuccessful = "";
+        // if (inputRoomForm.name.length > 0 && inputRoomForm.name.length < 3) {
+        //     errorName = "error"
+        // };
 
-        if (inputRoomForm.name.length > 0 && inputRoomForm.name.length < 3) {
-            errorName = "error"
-        };
-
-        if (inputRoomForm.name.length >= 3) {
-            errorNsuccessful = "error"
-        };
+        // if (inputRoomForm.name.length >= 3) {
+        //     errorNsuccessful = "error"
+        // };
 
 
 
@@ -888,17 +893,19 @@ function Modify() {
         };
 
 
+        // #13 58.78 src/Components/ModifyAdmin.js
+        // ﻿#13 58.78   Line 892:13:  'errorDescription' is already defined           no-redeclare
+        // ﻿#13 58.78   Line 893:13:  'errorDsuccessful' is already defined           no-redeclare        
+        // var errorDescription = "";
+        // var errorDsuccessful = "";
 
-        var errorDescription = "";
-        var errorDsuccessful = "";
+        // if (inputRoomForm.description.length > 0 && inputRoomForm.description.length < 3) {
+        //     errorDescription = "error"
+        // };
 
-        if (inputRoomForm.description.length > 0 && inputRoomForm.description.length < 3) {
-            errorDescription = "error"
-        };
-
-        if (inputRoomForm.description.length >= 3) {
-            errorDsuccessful = "error"
-        };
+        // if (inputRoomForm.description.length >= 3) {
+        //     errorDsuccessful = "error"
+        // };
 
 
         const HandleCleanRoom = (e) => {

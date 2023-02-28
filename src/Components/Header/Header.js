@@ -90,9 +90,11 @@ function Header() {
       .catch((err) => console.log(err));
   }
 
-  const buttonProfile = (e) => {
-    window.location.href = "http://localhost:3000/profile";
-  };
+  // #13 58.78 src/Components/Header/Header.js
+  // ﻿#13 58.78   Line 93:9:  'buttonProfile' is assigned a value but never used  no-unused-vars
+  // const buttonProfile = (e) => {
+  //   window.location.href = "http://localhost:3000/profile";
+  // };
 
   return (
     <div>

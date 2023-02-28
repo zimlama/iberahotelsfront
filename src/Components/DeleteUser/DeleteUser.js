@@ -10,17 +10,21 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 
 function DeleteUser() {
-
-    useEffect(() => {
-        console.log(users);
-    }, []);
+    // #13 58.78 src/Components/DeleteUser/DeleteUser.js
+    // ﻿#13 58.78   Line 16:8:   React Hook useEffect has a missing dependency: 'users'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+    // useEffect(() => {
+    //     console.log(users);
+    // }, []);
 
     if (!document.cookie) {
         window.location.href = "http://localhost:3000"
     };
 
     const [render, setRender] = useState("");
-    const { user, isAuthenticated, isLoading } = useAuth0();
+    // #13 58.78 src/Components/DeleteUser/DeleteUser.js
+    // ﻿#13 58.78   Line 23:36:  'isLoading' is assigned a value but never used                                                            no-unused-vars
+    // const { user, isAuthenticated, isLoading } = useAuth0();
+    const { user, isAuthenticated } = useAuth0();
 
     const users = [];
     const [state, setState] = useState([]);
