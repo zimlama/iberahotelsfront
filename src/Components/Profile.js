@@ -26,6 +26,7 @@ const { REACT_APP_GET_ALL_USERS, REACT_APP_MODIFY_USERS } = process.env;
 function Profile() {
 
     const { user, isAuthenticated, isLoading } = useAuth0();
+    console.log('esto es user: ', user);
     const [newUser, setNewUser] = useState("");
     const [buttonModify, setButtonModify] = useState("");
     const [errorSubmit, setErrorSubmit] = useState("");
@@ -70,7 +71,7 @@ function Profile() {
 
 
             axios
-                .get(REACT_APP_GET_ALL_USERS)
+                .get("https://iberahotelsapi-production.up.railway.app/users")
                 .then((res) => {
                     console.log("get axios profile", res.data);
 
