@@ -190,10 +190,13 @@ function Profile() {
         var errorNTsuccessful = "";
         var errorNation = "error";
 
-        if (input.nationality) {
-            var errorNTsuccessful = "error";
-            var errorNation = "";
-        };
+        // #13 36.94 src/Components/Profile.js
+        // ﻿#13 36.94   Line 194:17:  'errorNTsuccessful' is already defined  no-redeclare
+        // ﻿#13 36.94   Line 195:17:  'errorNation' is already defined        no-redeclare
+        // if (input.nationality) {
+        //     var errorNTsuccessful = "error";
+        //     var errorNation = "";
+        // };
 
 
         var errorName = "";

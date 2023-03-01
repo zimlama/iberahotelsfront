@@ -859,13 +859,15 @@ function Modify() {
         // var errorName = "";
         // var errorNsuccessful = "";
 
-        if (inputRoomForm.name.length > 0 && inputRoomForm.name.length < 3) {
-            var errorName = "error";
-        };
-
-        if (inputRoomForm.name.length >= 3) {
-            var errorNsuccessful = "error";
-        };
+        // #13 36.94 src/Components/ModifyAdmin.js
+        // ﻿#13 36.94   Line 863:17:  'errorName' is already defined         no-redeclare
+        // ﻿#13 36.94   Line 867:17:  'errorNsuccessful' is already defined  no-redeclare
+        // if (inputRoomForm.name.length > 0 && inputRoomForm.name.length < 3) {
+        //     var errorName = "error";
+        // };
+        // if (inputRoomForm.name.length >= 3) {
+        //     var errorNsuccessful = "error";
+        // };
 
 
         // #12 53.84 src/Components/ModifyAdmin.js
@@ -908,13 +910,15 @@ function Modify() {
         // var errorDescription = "";
         // var errorDsuccessful = "";
 
-        if (inputRoomForm.description.length > 0 && inputRoomForm.description.length < 3) {
-            var errorDescription = "error";
-        };
-
-        if (inputRoomForm.description.length >= 3) {
-            var errorDsuccessful = "error";
-        };
+        // #13 36.94 src/Components/ModifyAdmin.js
+        // ﻿#13 36.94   Line 912:17:  'errorDescription' is already defined  no-redeclare
+        // ﻿#13 36.94   Line 916:17:  'errorDsuccessful' is already defined  no-redeclare
+        // if (inputRoomForm.description.length > 0 && inputRoomForm.description.length < 3) {
+        //     var errorDescription = "error";
+        // };
+        // if (inputRoomForm.description.length >= 3) {
+        //     var errorDsuccessful = "error";
+        // };
 
 
         const HandleCleanRoom = (e) => {
