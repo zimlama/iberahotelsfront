@@ -1,5 +1,8 @@
-import React, { useEffect,useState } from "react";
-import allActions from "../../Redux/actions";
+
+
+
+
+import { useState } from "react";
 
 import {
   Box,
@@ -18,18 +21,13 @@ import {
   FormHelperText,
   HStack,
   FormControl,
-  Select,
 } from '@chakra-ui/react';
 
-import { useDispatch ,useSelector } from 'react-redux'
+import { createHotel } from "../../Redux/actions/hotels";
+import { useDispatch } from 'react-redux'
 // import { Link, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2'
-
-const { getUnlocode , createHotel} = allActions;
-
-
-
 
 const avatars = [
   {
@@ -69,20 +67,12 @@ export default function CreateHotelIbera() {
     description: "",
     address: "",
     stars: "",
-    status:true,
-    image: "",
+    image: [],
     
   })
   const [errors, setErrors] = useState({})
   const validateName = /^[a-zA-Z\s]+$/
 
-  useEffect(() => {
-    dispatch(getUnlocode()); 
-  }, []);
-  
-
-  const citiesUnlocode = useSelector((state) => state.unlocode);
-  
 
   // const [image, setImage] = useState(null)
   const [image] = useState(null)
@@ -151,18 +141,17 @@ export default function CreateHotelIbera() {
         text: 'Creaste el Hotel',
         confirmButtonColor: '#98D035'
      })
-      
       setInput({
         idHotels:"",
         name: "",
         city: "",
         description: "",
         address: "",
-        status:true,
         stars: "",
-        image: "",
+        image: [],
         
       })
+      
     }
   }
   return (
@@ -268,7 +257,7 @@ export default function CreateHotelIbera() {
           <FormControl>
           <Box as={'form'} mt={10}>
             <Stack spacing={4}>
-            {/* <Input
+            <Input
                 name= "idHotels"
                 placeholder="idHotels"
                 onChange={(e) => handleChange(e)}
@@ -279,7 +268,7 @@ export default function CreateHotelIbera() {
                 _placeholder={{
                   color: 'gray.500',
                 }}
-              /> */}
+              />
               <Input
                 name= "name"
                 placeholder="Hotel name"
@@ -295,8 +284,7 @@ export default function CreateHotelIbera() {
               {errors.name && (
                     <FormHelperText color='red.400'>{errors.name}</FormHelperText>
               )}
-              <Box>
-              <Select
+              <Input
                 name= "city"
                 placeholder="City"
                 onChange={(e) => handleChange(e)}
@@ -306,14 +294,8 @@ export default function CreateHotelIbera() {
                 color={'gray.500'}
                 _placeholder={{
                   color: 'gray.500',
-                }}>
-                
-                  {citiesUnlocode && citiesUnlocode.map((city)=> <option value={city.NameWoDiacritics}>{city.NameWoDiacritics}</option>)}
-
-                
-              </Select>
-              </Box>
-              
+                }}
+              />
               {errors.city && (
                   <FormHelperText color='red.400'>{errors.city}</FormHelperText>
               )}
@@ -356,7 +338,18 @@ export default function CreateHotelIbera() {
               {errors.stars && (
                     <FormHelperText color='red.400'>{errors.stars}</FormHelperText>
               )}
-            
+               <Input
+                name= "status"
+                onChange={(e) => handleChange(e)}
+                value={input.status}
+                placeholder="Status"
+                bg={'gray.100'}
+                border={0}
+                color={'gray.500'}
+                _placeholder={{
+                  color: 'gray.500',
+                }}
+              />
                 <Input
                 name= "image"
                 onChange={(e) => handleChange(e)}

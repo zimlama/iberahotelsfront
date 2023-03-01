@@ -35,6 +35,7 @@ const initialState = {
   services: [],
   amenities: [],
   citycheckinout: [],
+  unlocode:[],
 };
 
 export default function rootReducer(state = initialState, action) {
