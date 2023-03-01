@@ -9,7 +9,6 @@ import {
   CLEAN_FILTER,
   CREATE_HOTEL,
   GET_NAME_CITIES,
-  GET_UNLOCODE
 } from "../actions-types/index";
 
 const { REACT_APP_GET_ALL_HOTELS, REACT_APP_POST_HOTELS } = process.env;
@@ -88,15 +87,3 @@ export function getCity(payload) {
     }
   };
 }
-
-export function getUnlocode(){
-  return async function (dispatch){
-    try{
-      let json = await axios.get("https://iberahotelsapi-production.up.railway.app/cities");
-      dispatch({
-        type: GET_UNLOCODE,
-        payload: json.data
-      })
-    }catch(err){
-      console.log(err)
-}}};
