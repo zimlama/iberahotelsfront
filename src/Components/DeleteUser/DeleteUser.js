@@ -5,12 +5,9 @@ import {
     Card, CardBody, Image,
     Heading, Text, Divider
 } from '@chakra-ui/react';
-<<<<<<< HEAD
 // #12 53.84 src/Components/DeleteUser/DeleteUser.js
 // ﻿#12 53.84   Line 8:10:  'useEffect' is defined but never used  no-unused-vars
 // import { useEffect, useState } from "react";
-=======
->>>>>>> 8f284db9295722b31895a6b828f6aa939fc06e43
 import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 const { REACT_APP_GET_ALL_HOTELS, REACT_APP_GET_ALL_USERS, REACT_APP_FRONT,
