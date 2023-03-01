@@ -20,7 +20,8 @@ import {
 } from '@chakra-ui/react';
 import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-const { REACT_APP_GET_ALL_USERS, REACT_APP_MODIFY_USERS } = process.env;
+// const { REACT_APP_GET_ALL_USERS, REACT_APP_MODIFY_USERS } = process.env;
+const { REACT_APP_MODIFY_USERS } = process.env;
 
 
 function Profile() {
