@@ -4,22 +4,20 @@ import { Box, Flex, Button, Select, Stack } from "@chakra-ui/react";
 import SearchBar from "../SearchBar/SearchBar.js";
 import axios from "axios";
 
+
 const { REACT_APP_GET_ALL_HOTELS } = process.env;
+
 
 function Destinations() {
 
   useEffect(() => {
-
-
     axios.get(REACT_APP_GET_ALL_HOTELS)
       .then((res) => {
         console.log(res);
         setHotels(res.data);
       })
       .catch((err) => console.log(err))
-
   }, []);
-
 
   const [state, setState] = useState("active");
   const [hotels, setHotels] = useState([]);

@@ -49,12 +49,13 @@ import Icon from "@chakra-ui/icon";
 import { RiLuggageCartLine } from "react-icons/ri";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
+const { REACT_APP_POST_USERS, REACT_APP_GET_ALL_USERS } = process.env;
 
 function Header() {
   useEffect(() => {
     if (isAuthenticated) {
       axios
-        .post("http://localhost:3010/users/create", { email: email })
+        .post(REACT_APP_POST_USERS, { email: email })
         .then((res) => console.log("post axios", res))
         .catch((err) => console.log(err));
     }
@@ -71,7 +72,7 @@ function Header() {
     var email = user.email;
 
     axios
-      .get("http://localhost:3010/users")
+      .get(REACT_APP_GET_ALL_USERS)
       .then((res) => {
         console.log("get axios", res.data);
         status = res.data.find((u) => {
@@ -89,12 +90,6 @@ function Header() {
       })
       .catch((err) => console.log(err));
   }
-
-  // #13 58.78 src/Components/Header/Header.js
-  // ﻿#13 58.78   Line 93:9:  'buttonProfile' is assigned a value but never used  no-unused-vars
-  // const buttonProfile = (e) => {
-  //   window.location.href = "http://localhost:3000/profile";
-  // };
 
   return (
     <div>
@@ -258,4 +253,3 @@ function Header() {
 }
 
 export default Header;
-

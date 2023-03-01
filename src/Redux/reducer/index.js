@@ -23,6 +23,7 @@ import {
   CLEAN_FILTER,
   CREATE_HOTEL,
   GET_NAME_CITIES,
+  GET_ROOMS_CITIES
 } from "../actions-types/index";
 
 const initialState = {
@@ -32,6 +33,7 @@ const initialState = {
   hotelDetails: {},
   services: [],
   amenities: [],
+  citycheckinout: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -119,7 +121,13 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         hotels: action.payload,
       };
+    case GET_ROOMS_CITIES:
+      return {
+        ...state,
+        citycheckinout: action.payload,
+      }
 
+    
     default:
       return state;
   }

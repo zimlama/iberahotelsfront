@@ -7,19 +7,18 @@ import {
     Card, CardBody, Image, FormHelperText,
     Heading, Text, Divider, FormControl
 } from '@chakra-ui/react';
+const { REACT_APP_GET_ALL_HOTELS, REACT_APP_GET_ALL_USERS, REACT_APP_FRONT,
+    REACT_APP_MODIFY_HOTELS, REACT_APP_MODIFY_ROOMS } = process.env;
 
 
 function Modify() {
 
     if (!document.cookie) {
-        window.location.href = "http://localhost:3000"
+        window.location.href = REACT_APP_FRONT
     };
 
     const [render, setRender] = useState("");
-    // #13 58.78 src/Components/ModifyAdmin.js
-    // ﻿#13 58.78   Line 19:36:   'isLoading' is assigned a value but never used  no-unused-vars
-    // const { user, isAuthenticated, isLoading } = useAuth0();
-    const { user, isAuthenticated } = useAuth0();
+    const { user, isAuthenticated, isLoading } = useAuth0();
     const [errorSubmit, setErrorSubmit] = useState("");
 
     const hotels = [];
@@ -78,7 +77,7 @@ function Modify() {
 
     if (isAuthenticated) {
 
-        axios.get("http://localhost:3010/users")
+        axios.get(REACT_APP_GET_ALL_USERS)
             .then((res) => {
 
                 const logUser = res.data.find((u) => {
@@ -87,7 +86,7 @@ function Modify() {
 
                 if (res.data) {
                     if (logUser.privilige !== true) {
-                        window.location.href = "http://localhost:3000"
+                        window.location.href = REACT_APP_FRONT
                     };
                 };
 
@@ -136,7 +135,7 @@ function Modify() {
 
         if (stateHotel.length === 0 || alert2Hotel === "submit") {
 
-            axios.get("http://localhost:3010/hotels")
+            axios.get(REACT_APP_GET_ALL_HOTELS)
                 .then((res) => {
 
                     for (let i = 0; i < res.data.length; i++) {
@@ -240,7 +239,7 @@ function Modify() {
 
                 } else {
 
-                    axios.put(`http://localhost:3010/hotels/modify/${newHotel[0].idHotels}`, inputHotelForm)
+                    axios.put(`${REACT_APP_MODIFY_HOTELS}${newHotel[0].idHotels}`, inputHotelForm)
                         .then((res) => console.log(res))
                         .catch((err) => console.log(err));
 
@@ -693,7 +692,7 @@ function Modify() {
 
         if (stateRoom.length === 0 || alert2Room === "submit") {
 
-            axios.get("http://localhost:3010/hotels")
+            axios.get(REACT_APP_GET_ALL_HOTELS)
                 .then((res) => {
 
                     for (let i = 0; i < res.data.length; i++) {
@@ -819,7 +818,7 @@ function Modify() {
 
                 } else {
 
-                    axios.put(`http://localhost:3010/rooms/modify/${newRoom2[0].idRooms}`, inputRoomForm)
+                    axios.put(`${REACT_APP_MODIFY_ROOMS}${newRoom2[0].idRooms}`, inputRoomForm)
                         .then((res) => console.log(res))
                         .catch((err) => console.log(err));
 
@@ -848,19 +847,17 @@ function Modify() {
 
         };
 
-        // #13 58.78 src/Components/ModifyAdmin.js
-        // ﻿#13 58.78   Line 849:13:  'errorName' is already defined                  no-redeclare
-        // ﻿#13 58.78   Line 850:13:  'errorNsuccessful' is already defined           no-redeclare
-        // var errorName = "";
-        // var errorNsuccessful = "";
 
-        // if (inputRoomForm.name.length > 0 && inputRoomForm.name.length < 3) {
-        //     errorName = "error"
-        // };
+        var errorName = "";
+        var errorNsuccessful = "";
 
-        // if (inputRoomForm.name.length >= 3) {
-        //     errorNsuccessful = "error"
-        // };
+        if (inputRoomForm.name.length > 0 && inputRoomForm.name.length < 3) {
+            errorName = "error"
+        };
+
+        if (inputRoomForm.name.length >= 3) {
+            errorNsuccessful = "error"
+        };
 
 
 
@@ -893,19 +890,17 @@ function Modify() {
         };
 
 
-        // #13 58.78 src/Components/ModifyAdmin.js
-        // ﻿#13 58.78   Line 892:13:  'errorDescription' is already defined           no-redeclare
-        // ﻿#13 58.78   Line 893:13:  'errorDsuccessful' is already defined           no-redeclare        
-        // var errorDescription = "";
-        // var errorDsuccessful = "";
 
-        // if (inputRoomForm.description.length > 0 && inputRoomForm.description.length < 3) {
-        //     errorDescription = "error"
-        // };
+        var errorDescription = "";
+        var errorDsuccessful = "";
 
-        // if (inputRoomForm.description.length >= 3) {
-        //     errorDsuccessful = "error"
-        // };
+        if (inputRoomForm.description.length > 0 && inputRoomForm.description.length < 3) {
+            errorDescription = "error"
+        };
+
+        if (inputRoomForm.description.length >= 3) {
+            errorDsuccessful = "error"
+        };
 
 
         const HandleCleanRoom = (e) => {
