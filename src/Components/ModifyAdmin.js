@@ -18,7 +18,10 @@ function Modify() {
     };
 
     const [render, setRender] = useState("");
-    const { user, isAuthenticated, isLoading } = useAuth0();
+    // #13 54.88 src/Components/ModifyAdmin.js
+    // #13 54.88   Line 21:36:   'isLoading' is assigned a value but never used  no-unused-vars
+    // const { user, isAuthenticated, isLoading } = useAuth0();
+    const { user, isAuthenticated } = useAuth0();
     const [errorSubmit, setErrorSubmit] = useState("");
 
     const hotels = [];
@@ -291,11 +294,11 @@ function Modify() {
         var errorNsuccessful = "";
 
         if (inputHotelForm.name.length > 0 && inputHotelForm.name.length < 3) {
-            errorName = "error"
+            var errorName = "error"
         };
 
         if (inputHotelForm.name.length >= 3) {
-            errorNsuccessful = "error"
+            var errorNsuccessful = "error"
         };
 
 
@@ -852,11 +855,11 @@ function Modify() {
         var errorNsuccessful = "";
 
         if (inputRoomForm.name.length > 0 && inputRoomForm.name.length < 3) {
-            errorName = "error"
+            var errorName = "error"
         };
 
         if (inputRoomForm.name.length >= 3) {
-            errorNsuccessful = "error"
+            var errorNsuccessful = "error"
         };
 
 
@@ -866,11 +869,11 @@ function Modify() {
 
         if (inputRoomForm.bed_quantity.length > 1 || isNaN(inputRoomForm.bed_quantity) || inputRoomForm.bed_quantity > 5
             || inputRoomForm.bed_quantity < 1) {
-            errorBed_quantity = "error"
+             var errorBed_quantity = "error"
         } else {
 
             if (inputRoomForm.bed_quantity.length === 1) {
-                errorBsuccessful = "error"
+                var errorBsuccessful = "error"
             };
 
         };
@@ -880,11 +883,11 @@ function Modify() {
         var errorPsuccessful = "";
 
         if (inputRoomForm.price.length < 3 || inputRoomForm.price.length > 4 || isNaN(inputRoomForm.price)) {
-            errorPrice = "error"
+            var errorPrice = "error"
         } else {
 
             if (inputRoomForm.price.length === 3) {
-                errorPsuccessful = "error"
+                var errorPsuccessful = "error"
             };
 
         };
@@ -895,11 +898,11 @@ function Modify() {
         var errorDsuccessful = "";
 
         if (inputRoomForm.description.length > 0 && inputRoomForm.description.length < 3) {
-            errorDescription = "error"
+            var errorDescription = "error"
         };
 
         if (inputRoomForm.description.length >= 3) {
-            errorDsuccessful = "error"
+            var errorDsuccessful = "error"
         };
 
 

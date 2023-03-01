@@ -1,11 +1,22 @@
 import axios from "axios";
+// #13 54.88 src/Components/Profile.js
+// #13 54.88   Line 8:23:    'AlertTitle' is defined but never used        no-unused-vars
+// #13 54.88   Line 8:35:    'AlertDescription' is defined but never used  no-unused-vars
+// import {
+//     Box, Stack, Button,
+//     Card, CardBody, Image,
+//     Heading, Text, Divider, Select,
+//     FormControl, FormLabel, Input,
+//     FormHelperText, FormErrorMessage,
+//     Alert, AlertIcon, AlertTitle, AlertDescription
+// } from '@chakra-ui/react';
 import {
     Box, Stack, Button,
     Card, CardBody, Image,
     Heading, Text, Divider, Select,
     FormControl, FormLabel, Input,
     FormHelperText, FormErrorMessage,
-    Alert, AlertIcon, AlertTitle, AlertDescription
+    Alert, AlertIcon
 } from '@chakra-ui/react';
 import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
