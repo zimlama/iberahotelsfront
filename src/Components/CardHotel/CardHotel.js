@@ -75,7 +75,7 @@ export default function CreateHotelIbera() {
   })
   const [errors, setErrors] = useState({})
   const validateName = /^[a-zA-Z\s]+$/
-
+  
   useEffect(() => {
     dispatch(getUnlocode()); 
   }, []);

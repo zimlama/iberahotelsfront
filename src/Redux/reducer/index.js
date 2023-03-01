@@ -23,7 +23,8 @@ import {
   CLEAN_FILTER,
   CREATE_HOTEL,
   GET_NAME_CITIES,
-  GET_ROOMS_CITIES
+  GET_ROOMS_CITIES,
+  GET_UNLOCODE
 } from "../actions-types/index";
 
 const initialState = {
@@ -126,8 +127,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         citycheckinout: action.payload,
       }
-
-    
+    case GET_UNLOCODE:    
+      return{
+        ...state,
+        unlocode : action.payload
+      }
     default:
       return state;
   }
