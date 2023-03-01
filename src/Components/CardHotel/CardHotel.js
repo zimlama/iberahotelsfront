@@ -16,7 +16,7 @@ import {
 import { Link } from "react-router-dom";
 import { RiStarFill } from "react-icons/ri";
 
-function CardHotel({ id, name, city, img, stars }) {
+function CardHotel({ id, name, city, img, stars, status }) {
   const star = [];
   for (let i = 0; i < stars; i++) {
     star.push(<Icon key={i} as={RiStarFill} />);
@@ -47,11 +47,23 @@ function CardHotel({ id, name, city, img, stars }) {
           </CardBody>
           <Divider />
           <CardFooter>
-            <Link to={`/hotels/${id}`}>
+
+            {status === false ?
+
               <Button variant="solid" colorScheme="teal">
-                View more info
+                Disable
               </Button>
-            </Link>
+
+              :
+
+              <Link to={`/hotels/${id}`}>
+                <Button variant="solid" colorScheme="teal">
+                  View more info
+                </Button>
+              </Link>
+
+            }
+
           </CardFooter>
         </Card>
       </Box>

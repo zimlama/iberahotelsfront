@@ -97,6 +97,7 @@ function HotelDetails(props) {
                 image={r.image}
                 name={r.name}
                 price={r.price}
+                status={r.status}
               />
             );
           })}

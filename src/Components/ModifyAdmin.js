@@ -290,8 +290,11 @@ function Modify() {
             return 0;
         });
 
-        var errorName = "";
-        var errorNsuccessful = "";
+        // #12 53.84 src/Components/ModifyAdmin.js
+        // ﻿#12 53.84   Line 297:17:  'errorName' is already defined          no-redeclare
+        // ﻿#12 53.84   Line 301:17:  'errorNsuccessful' is already defined   no-redeclare
+        // var errorName = "";
+        // var errorNsuccessful = "";
 
         if (inputHotelForm.name.length > 0 && inputHotelForm.name.length < 3) {
             var errorName = "error"
@@ -850,22 +853,26 @@ function Modify() {
 
         };
 
-
-        var errorName = "";
-        var errorNsuccessful = "";
+        // #12 53.84 src/Components/ModifyAdmin.js
+        // ﻿#12 53.84   Line 854:13:  'errorName' is already defined          no-redeclare
+        // ﻿#12 53.84   Line 855:13:  'errorNsuccessful' is already defined   no-redeclare
+        // var errorName = "";
+        // var errorNsuccessful = "";
 
         if (inputRoomForm.name.length > 0 && inputRoomForm.name.length < 3) {
-            var errorName = "error"
+            var errorName = "error";
         };
 
         if (inputRoomForm.name.length >= 3) {
-            var errorNsuccessful = "error"
+            var errorNsuccessful = "error";
         };
 
 
-
-        var errorBed_quantity = "";
-        var errorBsuccessful = "";
+        // #12 53.84 src/Components/ModifyAdmin.js
+        // ﻿#12 53.84   Line 872:18:  'errorBed_quantity' is already defined  no-redeclare
+        // ﻿#12 53.84   Line 876:21:  'errorBsuccessful' is already defined   no-redeclare
+        // var errorBed_quantity = "";
+        // var errorBsuccessful = "";
 
         if (inputRoomForm.bed_quantity.length > 1 || isNaN(inputRoomForm.bed_quantity) || inputRoomForm.bed_quantity > 5
             || inputRoomForm.bed_quantity < 1) {
@@ -878,31 +885,35 @@ function Modify() {
 
         };
 
-
-        var errorPrice = "";
-        var errorPsuccessful = "";
+        // #12 53.84 src/Components/ModifyAdmin.js
+        // ﻿#12 53.84   Line 886:17:  'errorPrice' is already defined         no-redeclare
+        // ﻿#12 53.84   Line 890:21:  'errorPsuccessful' is already defined   no-redeclare
+        // var errorPrice = "";
+        // var errorPsuccessful = "";
 
         if (inputRoomForm.price.length < 3 || inputRoomForm.price.length > 4 || isNaN(inputRoomForm.price)) {
             var errorPrice = "error"
         } else {
 
             if (inputRoomForm.price.length === 3) {
-                var errorPsuccessful = "error"
+                var errorPsuccessful = "error";
             };
 
         };
 
 
-
-        var errorDescription = "";
-        var errorDsuccessful = "";
+        // #12 53.84 src/Components/ModifyAdmin.js
+        // ﻿#12 53.84   Line 897:13:  'errorDescription' is already defined   no-redeclare
+        // ﻿#12 53.84   Line 898:13:  'errorDsuccessful' is already defined   no-redeclare
+        // var errorDescription = "";
+        // var errorDsuccessful = "";
 
         if (inputRoomForm.description.length > 0 && inputRoomForm.description.length < 3) {
-            var errorDescription = "error"
+            var errorDescription = "error";
         };
 
         if (inputRoomForm.description.length >= 3) {
-            var errorDsuccessful = "error"
+            var errorDsuccessful = "error";
         };
 
 

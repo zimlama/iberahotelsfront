@@ -22,6 +22,7 @@ function DetailsRoom({
   description,
   price,
   image,
+  status
 }) {
   const navigate = useNavigate();
   const [dayqty, setDayqty] = useState("");
@@ -48,25 +49,16 @@ function DetailsRoom({
   function handleSelect(e) {
     setDayqty(e.target.value);
   }
-  const bed_icons = [];
-  for (let i = 0; i < bed_quantity; i++) {
-    bed_icons.push(<Icon key={i} as={IoBedSharp} />);
-  }
-
   return (
-    <Box mt="20px" padding="20px" boxSize="">
+    <Box mt="20px" padding="20px">
       <Card
         direction={{ base: "column", sm: "row" }}
         overflow="hidden"
         variant="outline"
       >
         <Image
-          objectFit="fill"
-          maxW={{ base: "100%", sm: "450px" }}
-          mb="40px"
-          mt="30px"
-          padding="20px"
-          ml="10px"
+          objectFit="cover"
+          maxW={{ base: "80%", sm: "150px" }}
           alt="hotelIbera"
           src={image[0]}
         />
@@ -89,7 +81,8 @@ function DetailsRoom({
             </Heading>
 
             <Text fontSize="xl" py="12" mb="50px">
-              Beds quantity <Text color="teal">{bed_icons}</Text>
+              {bed_quantity} beds
+              <Icon ml="30px" as={IoBedSharp}></Icon>
               <Text mt="10px" fontSize="md">
                 {description}
               </Text>
@@ -101,19 +94,31 @@ function DetailsRoom({
           </CardBody>
 
           <CardFooter>
-            <Button
-              ml="70%"
-              variant="solid"
-              colorScheme="teal"
-              onClick={() => handleBanana()}
-            >
-              Reserve
-            </Button>
+
+            {status === false ?
+
+              <Button variant="solid" colorScheme="teal">
+                Disable
+              </Button>
+
+              :
+
+              <Button
+                variant="solid"
+                colorScheme="teal"
+                onClick={() => handleBanana()}
+              >
+                Reserve
+              </Button>
+
+            }
+
             <Select onChange={(e) => handleSelect(e)}>
               <option value={1}>1</option>
               <option value={2}>2</option>
               <option value={3}>3</option>
             </Select>
+
           </CardFooter>
         </Stack>
       </Card>

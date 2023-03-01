@@ -5,24 +5,24 @@ import SearchBar from "../SearchBar/SearchBar.js";
 import axios from "axios";
 
 
-const { REACT_APP_GET_ALL_HOTELS } = process.env;
-
-
 function Destinations() {
 
   useEffect(() => {
-    axios.get(REACT_APP_GET_ALL_HOTELS)
+
+    axios.get("http://localhost:3010/hotels")
       .then((res) => {
         console.log(res);
         setHotels(res.data);
       })
       .catch((err) => console.log(err))
+
   }, []);
+
 
   const [state, setState] = useState("active");
   const [hotels, setHotels] = useState([]);
   const [newhotels, setNewHotels] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const city = [];
   var ITEMS_PER_PAGE = 7;
 
@@ -55,11 +55,11 @@ function Destinations() {
 
       const prevPage = currentPage - 1;
 
-      if (currentPage === 1) return;
+      if (currentPage === 0) return;
 
       if (newhotels.length !== 6) {
 
-        if (prevPage < 1 || newhotels.length >= 8 || newhotels.length <= 6) return;
+        if (prevPage < 0 || newhotels.length >= 8 || newhotels.length <= 6) return;
 
       }
 
@@ -254,6 +254,7 @@ function Destinations() {
                 img={hotel.image}
                 stars={hotel.stars}
                 id={hotel.idHotels}
+                status={hotel.status}
               />
             );
           })}
@@ -313,3 +314,4 @@ function Destinations() {
 };
 
 export default Destinations;
+

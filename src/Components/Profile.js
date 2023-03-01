@@ -175,9 +175,11 @@ function Profile() {
         };
 
 
-
-        var errorBirthday = "error";
-        var errorBsuccessful = "";
+        // #12 53.84 src/Components/Profile.js
+        // ﻿#12 53.84   Line 183:17:  'errorBirthday' is already defined      no-redeclare
+        // ﻿#12 53.84   Line 184:17:  'errorBsuccessful' is already defined   no-redeclare        
+        // var errorBirthday = "error";
+        // var errorBsuccessful = "";
 
         if (input.date_birth.length >= 8) {
             var errorBirthday = "";
