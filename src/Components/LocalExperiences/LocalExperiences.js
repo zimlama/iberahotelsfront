@@ -3,7 +3,7 @@
 // ﻿#13 76.10   Line 4:10:  'Box' is defined but never used       no-unused-vars
 // import React, { useEffect, useState } from "react";
 // import { Box } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import CardActivities from "../CardActivities/CardActivities.js";
 
