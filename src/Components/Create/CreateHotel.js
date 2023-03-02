@@ -22,7 +22,9 @@ import {
 // #13 76.10 src/Components/Create/CreateHotel.js
 // ﻿#13 76.10   Line 22:10:  'createHotel' is defined but never used               no-unused-vars
 // import { createHotel } from "../../Redux/actions/hotels";
-import { useDispatch } from 'react-redux'
+// #13 77.61 src/Components/Create/CreateHotel.js
+// ﻿#13 77.61   Line 25:10:  'useDispatch' is defined but never used  no-unused-vars
+// import { useDispatch } from 'react-redux'
 // #13 76.10 src/Components/Create/CreateHotel.js
 // ﻿#13 76.10   Line 24:16:  'useNavigate' is defined but never used               no-unused-vars
 // import { Link, useNavigate } from "react-router-dom";
