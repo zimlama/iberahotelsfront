@@ -10,3 +10,4 @@ export const CLEAN_FILTER = "CLEAN_FILTER";
 export const CREATE_HOTEL = "CREATE_HOTEL";
 export const GET_NAME_CITIES = "GET_NAME_CITIES";
 export const GET_ROOMS_CITIES = "GET_ROOMS_CITIES";
+// cambios @Facu

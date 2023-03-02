@@ -5,6 +5,7 @@ import SearchBar from "../SearchBar/SearchBar.js";
 import axios from "axios";
 const { REACT_APP_GET_ALL_HOTELS } = process.env;
 
+
 function Destinations() {
 
   useEffect(() => {
@@ -24,7 +25,7 @@ function Destinations() {
   const [newhotels, setNewHotels] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const city = [];
-  var ITEMS_PER_PAGE = 7;
+  var ITEMS_PER_PAGE = 8;
 
   if (hotels.length !== 0) {
 
@@ -38,7 +39,7 @@ function Destinations() {
 
         const firstIndex = nextPage * ITEMS_PER_PAGE;
 
-        if (nextPage >= totalElementos / ITEMS_PER_PAGE || newhotels.length >= 8 || newhotels.length <= 6) return;
+        if (nextPage >= totalElementos / ITEMS_PER_PAGE || newhotels.length >= 9 || newhotels.length <= 7) return;
 
         setNewHotels([...hotels].splice(firstIndex, ITEMS_PER_PAGE))
         setCurrentPage(nextPage);
@@ -53,14 +54,12 @@ function Destinations() {
 
     const prevHandler = () => {
 
-      const prevPage = currentPage - 1;
-
       if (currentPage === 0) return;
 
-      if (newhotels.length !== 6) {
+      const prevPage = currentPage - 1;
 
-        if (prevPage < 0 || newhotels.length >= 8 || newhotels.length <= 6) return;
-
+      if (newhotels.length !== 1) {
+        if (prevPage < 0 || newhotels.length >= 9 || newhotels.length <= 7) return;
       }
 
       const firstIndex = prevPage * ITEMS_PER_PAGE;
@@ -314,4 +313,3 @@ function Destinations() {
 };
 
 export default Destinations;
-

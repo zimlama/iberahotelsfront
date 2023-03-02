@@ -1,35 +1,4 @@
 import React, { useEffect, useState } from "react";
-
-// src/Components/Header/Header.js
-//   Line 13:3:  'PopoverBody' is defined but never used         no-unused-vars
-//   Line 14:3:  'PopoverFooter' is defined but never used       no-unused-vars
-//   Line 16:3:  'PopoverCloseButton' is defined but never used  no-unused-vars
-//   Line 17:3:  'Alert' is defined but never used               no-unused-vars
-//   Line 18:3:  'AlertIcon' is defined but never used           no-unused-vars
-//   Line 19:3:  'AlertTitle' is defined but never used          no-unused-vars
-//   Line 20:3:  'AlertDescription' is defined but never used    no-unused-vars
-//   Line 21:3:  'Stack' is defined but never used               no-unused-vars
-// import {
-//   Box,
-//   Button,
-//   Image,
-//   Link,
-//   HStack,
-//   Flex,
-//   Popover,
-//   PopoverTrigger,
-//   PopoverContent,
-//   PopoverHeader,
-//   PopoverBody,
-//   PopoverFooter,
-//   PopoverArrow,
-//   PopoverCloseButton,
-//   Alert,
-//   AlertIcon,
-//   AlertTitle,
-//   AlertDescription,
-//   Stack,
-// } from "@chakra-ui/react";
 import {
   Box,
   Button,
@@ -174,7 +143,13 @@ function Header() {
 
                   <PopoverHeader>
                     <Link color="red" fontSize={18} href="/createHotel">
-                      Create{" "}
+                      Create Hotel{" "}
+                    </Link>
+                  </PopoverHeader>
+
+                  <PopoverHeader>
+                    <Link color="red" fontSize={18} href="/createRoom">
+                      Create Room{" "}
                     </Link>
                   </PopoverHeader>
 

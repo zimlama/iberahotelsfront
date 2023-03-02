@@ -5,9 +5,6 @@ import {
     Card, CardBody, Image,
     Heading, Text, Divider
 } from '@chakra-ui/react';
-// #12 53.84 src/Components/DeleteUser/DeleteUser.js
-// ﻿#12 53.84   Line 8:10:  'useEffect' is defined but never used  no-unused-vars
-// import { useEffect, useState } from "react";
 import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 const { REACT_APP_GET_ALL_HOTELS, REACT_APP_GET_ALL_USERS, REACT_APP_FRONT,
@@ -22,9 +19,6 @@ function DeleteUser() {
     };
 
     const [render, setRender] = useState("");
-    // #13 36.94 src/Components/DeleteUser/DeleteUser.js
-    // ﻿#13 36.94   Line 25:36:  'isLoading' is assigned a value but never used  no-unused-vars
-    // const { user, isAuthenticated, isLoading } = useAuth0();
     const { user, isAuthenticated } = useAuth0();
 
     const users = [];

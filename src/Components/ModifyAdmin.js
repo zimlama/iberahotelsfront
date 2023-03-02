@@ -18,9 +18,6 @@ function Modify() {
     };
 
     const [render, setRender] = useState("");
-    // #13 54.88 src/Components/ModifyAdmin.js
-    // #13 54.88   Line 21:36:   'isLoading' is assigned a value but never used  no-unused-vars
-    // const { user, isAuthenticated, isLoading } = useAuth0();
     const { user, isAuthenticated } = useAuth0();
     const [errorSubmit, setErrorSubmit] = useState("");
 
@@ -231,8 +228,7 @@ function Modify() {
 
         const SubmitModifyHotel = (e) => {
 
-            if (!errorName && !errorStars && !errorDescription && !errorAdress && !errorCity &&
-                errorNsuccessful && errorAsuccessful && errorDsuccessful && errorSsuccessful &&
+            if (errorNsuccessful && errorAsuccessful && errorDsuccessful && errorSsuccessful &&
                 errorCsuccessful) {
 
                 if (!inputHotelForm.name || !inputHotelForm.address || !inputHotelForm.city ||
@@ -290,71 +286,28 @@ function Modify() {
             return 0;
         });
 
-        // #12 53.84 src/Components/ModifyAdmin.js
-        // ﻿#12 53.84   Line 297:17:  'errorName' is already defined          no-redeclare
-        // ﻿#12 53.84   Line 301:17:  'errorNsuccessful' is already defined   no-redeclare
-        // var errorName = "";
-        // var errorNsuccessful = "";
-
-        if (inputHotelForm.name.length > 0 && inputHotelForm.name.length < 3) {
-            var errorName = "error"
-        };
 
         if (inputHotelForm.name.length >= 3) {
             var errorNsuccessful = "error"
         };
 
-
-        var errorAdress = "";
-        var errorAsuccessful = "";
-
-        if (inputHotelForm.address.length > 0 && inputHotelForm.address.length < 3) {
-            errorAdress = "error"
-        };
-
         if (inputHotelForm.address.length >= 3) {
-            errorAsuccessful = "error"
+            var errorAsuccessful = "error"
         };
 
-
-        var errorCity = "";
-        var errorCsuccessful = "";
-
-        if (inputHotelForm.city.length > 0 && inputHotelForm.city.length < 3) {
-            errorCity = "error"
-        };
 
         if (inputHotelForm.city.length >= 3) {
-            errorCsuccessful = "error"
-        };
-
-
-        var errorDescription = "";
-        var errorDsuccessful = "";
-
-        if (inputHotelForm.description.length > 0 && inputHotelForm.description.length < 3) {
-            errorDescription = "error"
+            var errorCsuccessful = "error"
         };
 
         if (inputHotelForm.description.length >= 3) {
-            errorDsuccessful = "error"
+            var errorDsuccessful = "error"
         };
 
-
-        var errorStars = "";
-        var errorSsuccessful = "";
-
-        if (inputHotelForm.stars.length > 1 || isNaN(inputHotelForm.stars) || inputHotelForm.stars >= 6
-            || inputHotelForm.stars <= 0) {
-            errorStars = "error"
-        } else {
-
-            if (inputHotelForm.stars.length === 1) {
-                errorSsuccessful = "error"
-            };
-
+        if (inputHotelForm.stars.length === 1 && !isNaN(inputHotelForm.stars) && inputHotelForm.stars > 0
+            && inputHotelForm.stars < 6) {
+            var errorSsuccessful = "error"
         };
-
 
 
         if (stateHotel.length !== 0) {
@@ -531,16 +484,9 @@ function Modify() {
                                     <FormLabel>Name</FormLabel>
                                     <Input type='text' name="name" borderWidth='3px' value={inputHotelForm.name}
                                         onChange={handleFormChangeHotel} />
-                                    {!errorName && !errorNsuccessful ? (
+                                    {!errorNsuccessful ? (
                                         <FormHelperText>
-                                            Complete Name.
-                                        </FormHelperText>
-                                    ) : (
-                                        <FormErrorMessage></FormErrorMessage>
-                                    )}
-                                    {errorName && !errorNsuccessful ? (
-                                        <FormHelperText color="blue">
-                                            Error: Name should have 3 letters.
+                                            Name should have 3 letters.
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage></FormErrorMessage>
@@ -556,16 +502,9 @@ function Modify() {
                                     <FormLabel>Address</FormLabel>
                                     <Input type='text' name="address" borderWidth='3px' value={inputHotelForm.address}
                                         onChange={handleFormChangeHotel} />
-                                    {!errorAdress && !errorAsuccessful ? (
+                                    {!errorAsuccessful ? (
                                         <FormHelperText>
-                                            Complete Address.
-                                        </FormHelperText>
-                                    ) : (
-                                        <FormErrorMessage></FormErrorMessage>
-                                    )}
-                                    {errorAdress && !errorAsuccessful ? (
-                                        <FormHelperText color="blue">
-                                            Error: Address should have 3 letters.
+                                            Address should have 3 letters.
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage></FormErrorMessage>
@@ -581,16 +520,9 @@ function Modify() {
                                     <FormLabel>City</FormLabel>
                                     <Input type='text' name="city" borderWidth='3px' value={inputHotelForm.city}
                                         onChange={handleFormChangeHotel} />
-                                    {!errorCity && !errorCsuccessful ? (
+                                    {!errorCsuccessful ? (
                                         <FormHelperText>
-                                            Complete City.
-                                        </FormHelperText>
-                                    ) : (
-                                        <FormErrorMessage></FormErrorMessage>
-                                    )}
-                                    {errorCity && !errorCsuccessful ? (
-                                        <FormHelperText color="blue">
-                                            Error: City should have 3 letters.
+                                            City should have 3 letters.
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage></FormErrorMessage>
@@ -606,16 +538,9 @@ function Modify() {
                                     <FormLabel>Description</FormLabel>
                                     <Input type='text' name="description" borderWidth='3px' value={inputHotelForm.description}
                                         onChange={handleFormChangeHotel} />
-                                    {!errorDescription && !errorDsuccessful ? (
+                                    {!errorDsuccessful ? (
                                         <FormHelperText>
-                                            Complete Description.
-                                        </FormHelperText>
-                                    ) : (
-                                        <FormErrorMessage></FormErrorMessage>
-                                    )}
-                                    {errorDescription && !errorDsuccessful ? (
-                                        <FormHelperText color="blue">
-                                            Error: Description should have 3 letters.
+                                            Description should have 3 letters.
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage></FormErrorMessage>
@@ -631,16 +556,9 @@ function Modify() {
                                     <FormLabel>Stars</FormLabel>
                                     <Input type='text' name="stars" borderWidth='3px' value={inputHotelForm.stars}
                                         onChange={handleFormChangeHotel} />
-                                    {!errorStars && !errorSsuccessful ? (
+                                    {!errorSsuccessful ? (
                                         <FormHelperText>
-                                            Complete Stars.
-                                        </FormHelperText>
-                                    ) : (
-                                        <FormErrorMessage></FormErrorMessage>
-                                    )}
-                                    {errorStars && !errorSsuccessful ? (
-                                        <FormHelperText color="blue">
-                                            Error: Stars should have 1 number.
+                                            Stars should have 1 number.
                                             Less than 6 and greater than 0
                                         </FormHelperText>
                                     ) : (
@@ -814,8 +732,7 @@ function Modify() {
 
         const SubmitModifyRoom = (e) => {
 
-            if (!errorName && !errorBed_quantity && !errorPrice && !errorDescription &&
-                errorNsuccessful && errorDsuccessful && errorPsuccessful && errorBsuccessful) {
+            if (errorNamSuccessful && errorDesSuccessful && errorPsuccessful && errorBedSuccessful) {
 
                 if (!inputRoomForm.name || !inputRoomForm.bed_quantity || !inputRoomForm.price ||
                     !inputRoomForm.description) {
@@ -853,72 +770,26 @@ function Modify() {
 
         };
 
-        // #12 53.84 src/Components/ModifyAdmin.js
-        // ﻿#12 53.84   Line 854:13:  'errorName' is already defined          no-redeclare
-        // ﻿#12 53.84   Line 855:13:  'errorNsuccessful' is already defined   no-redeclare
-        // var errorName = "";
-        // var errorNsuccessful = "";
 
-        // #13 36.94 src/Components/ModifyAdmin.js
-        // ﻿#13 36.94   Line 863:17:  'errorName' is already defined         no-redeclare
-        // ﻿#13 36.94   Line 867:17:  'errorNsuccessful' is already defined  no-redeclare
-        // if (inputRoomForm.name.length > 0 && inputRoomForm.name.length < 3) {
-        //     var errorName = "error";
-        // };
-        // if (inputRoomForm.name.length >= 3) {
-        //     var errorNsuccessful = "error";
-        // };
-
-
-        // #12 53.84 src/Components/ModifyAdmin.js
-        // ﻿#12 53.84   Line 872:18:  'errorBed_quantity' is already defined  no-redeclare
-        // ﻿#12 53.84   Line 876:21:  'errorBsuccessful' is already defined   no-redeclare
-        // var errorBed_quantity = "";
-        // var errorBsuccessful = "";
-
-        if (inputRoomForm.bed_quantity.length > 1 || isNaN(inputRoomForm.bed_quantity) || inputRoomForm.bed_quantity > 5
-            || inputRoomForm.bed_quantity < 1) {
-             var errorBed_quantity = "error"
-        } else {
-
-            if (inputRoomForm.bed_quantity.length === 1) {
-                var errorBsuccessful = "error"
-            };
-
-        };
-
-        // #12 53.84 src/Components/ModifyAdmin.js
-        // ﻿#12 53.84   Line 886:17:  'errorPrice' is already defined         no-redeclare
-        // ﻿#12 53.84   Line 890:21:  'errorPsuccessful' is already defined   no-redeclare
-        // var errorPrice = "";
-        // var errorPsuccessful = "";
-
-        if (inputRoomForm.price.length < 3 || inputRoomForm.price.length > 4 || isNaN(inputRoomForm.price)) {
-            var errorPrice = "error"
-        } else {
-
-            if (inputRoomForm.price.length === 3) {
-                var errorPsuccessful = "error";
-            };
-
+        if (inputRoomForm.name.length >= 3) {
+            var errorNamSuccessful = "error"
         };
 
 
-        // #12 53.84 src/Components/ModifyAdmin.js
-        // ﻿#12 53.84   Line 897:13:  'errorDescription' is already defined   no-redeclare
-        // ﻿#12 53.84   Line 898:13:  'errorDsuccessful' is already defined   no-redeclare
-        // var errorDescription = "";
-        // var errorDsuccessful = "";
+        if (inputRoomForm.bed_quantity.length === 1 && !isNaN(inputRoomForm.bed_quantity)
+            && inputRoomForm.bed_quantity > 0 && inputRoomForm.bed_quantity < 6) {
+            var errorBedSuccessful = "error"
+        };
 
-        // #13 36.94 src/Components/ModifyAdmin.js
-        // ﻿#13 36.94   Line 912:17:  'errorDescription' is already defined  no-redeclare
-        // ﻿#13 36.94   Line 916:17:  'errorDsuccessful' is already defined  no-redeclare
-        // if (inputRoomForm.description.length > 0 && inputRoomForm.description.length < 3) {
-        //     var errorDescription = "error";
-        // };
-        // if (inputRoomForm.description.length >= 3) {
-        //     var errorDsuccessful = "error";
-        // };
+
+        if (inputRoomForm.price.length === 3 && !isNaN(inputRoomForm.price)) {
+            var errorPsuccessful = "error"
+        };
+
+
+        if (inputRoomForm.description.length >= 3) {
+            var errorDesSuccessful = "error"
+        };
 
 
         const HandleCleanRoom = (e) => {
@@ -1201,21 +1072,14 @@ function Modify() {
                                     <FormLabel>Name</FormLabel>
                                     <Input type='text' name="name" borderWidth='3px' value={inputRoomForm.name}
                                         onChange={handleFormChangeRoom} />
-                                    {!errorName && !errorNsuccessful ? (
+                                    {!errorNamSuccessful ? (
                                         <FormHelperText>
-                                            Complete Name.
+                                            Name should have 3 letters.
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage></FormErrorMessage>
                                     )}
-                                    {errorName && !errorNsuccessful ? (
-                                        <FormHelperText color="blue">
-                                            Error: Name should have 3 letters.
-                                        </FormHelperText>
-                                    ) : (
-                                        <FormErrorMessage></FormErrorMessage>
-                                    )}
-                                    {errorNsuccessful ? (
+                                    {errorNamSuccessful ? (
                                         <FormHelperText color="red" className="letter" fontWeight='bold'>
                                             Successful
                                         </FormHelperText>
@@ -1226,22 +1090,15 @@ function Modify() {
                                     <FormLabel>Bed_quantity</FormLabel>
                                     <Input type='text' name="bed_quantity" borderWidth='3px' value={inputRoomForm.bed_quantity}
                                         onChange={handleFormChangeRoom} />
-                                    {!errorBed_quantity && !errorBsuccessful ? (
+                                    {!errorBedSuccessful ? (
                                         <FormHelperText>
-                                            Complete Bed_quantity.
-                                        </FormHelperText>
-                                    ) : (
-                                        <FormErrorMessage></FormErrorMessage>
-                                    )}
-                                    {errorBed_quantity && !errorBsuccessful ? (
-                                        <FormHelperText color="blue">
-                                            Error: Bed_quantity should have 1 number.
+                                            Bed_quantity should have 1 number.
                                             Less than 6 and greater than 0
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage></FormErrorMessage>
                                     )}
-                                    {errorBsuccessful ? (
+                                    {errorBedSuccessful ? (
                                         <FormHelperText color="red" className="letter" fontWeight='bold'>
                                             Successful
                                         </FormHelperText>
@@ -1252,16 +1109,9 @@ function Modify() {
                                     <FormLabel>Price</FormLabel>
                                     <Input type='text' name="price" borderWidth='3px' value={inputRoomForm.price}
                                         onChange={handleFormChangeRoom} />
-                                    {!errorPrice && !errorPsuccessful ? (
+                                    {!errorPsuccessful ? (
                                         <FormHelperText>
-                                            Complete Price.
-                                        </FormHelperText>
-                                    ) : (
-                                        <FormErrorMessage></FormErrorMessage>
-                                    )}
-                                    {errorPrice && !errorPsuccessful ? (
-                                        <FormHelperText color="blue">
-                                            Error: Price should have 3 numbers.
+                                            Price can only have numbers.
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage></FormErrorMessage>
@@ -1277,21 +1127,14 @@ function Modify() {
                                     <FormLabel>Description</FormLabel>
                                     <Input type='text' name="description" borderWidth='3px' value={inputRoomForm.description}
                                         onChange={handleFormChangeRoom} />
-                                    {!errorDescription && !errorDsuccessful ? (
+                                    {!errorDesSuccessful ? (
                                         <FormHelperText>
-                                            Complete Description.
+                                            Description should have 3 letters.
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage></FormErrorMessage>
                                     )}
-                                    {errorDescription && !errorDsuccessful ? (
-                                        <FormHelperText color="blue">
-                                            Error: Description should have 3 letters.
-                                        </FormHelperText>
-                                    ) : (
-                                        <FormErrorMessage></FormErrorMessage>
-                                    )}
-                                    {errorDsuccessful ? (
+                                    {errorDesSuccessful ? (
                                         <FormHelperText color="red" className="letter" fontWeight='bold'>
                                             Successful
                                         </FormHelperText>

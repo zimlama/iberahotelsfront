@@ -1,15 +1,4 @@
 import axios from "axios";
-// #13 54.88 src/Components/Profile.js
-// #13 54.88   Line 8:23:    'AlertTitle' is defined but never used        no-unused-vars
-// #13 54.88   Line 8:35:    'AlertDescription' is defined but never used  no-unused-vars
-// import {
-//     Box, Stack, Button,
-//     Card, CardBody, Image,
-//     Heading, Text, Divider, Select,
-//     FormControl, FormLabel, Input,
-//     FormHelperText, FormErrorMessage,
-//     Alert, AlertIcon, AlertTitle, AlertDescription
-// } from '@chakra-ui/react';
 import {
     Box, Stack, Button,
     Card, CardBody, Image,
@@ -20,14 +9,12 @@ import {
 } from '@chakra-ui/react';
 import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-// const { REACT_APP_GET_ALL_USERS, REACT_APP_MODIFY_USERS } = process.env;
-const { REACT_APP_MODIFY_USERS } = process.env;
+const { REACT_APP_GET_ALL_USERS, REACT_APP_MODIFY_USERS } = process.env;
 
 
 function Profile() {
 
     const { user, isAuthenticated, isLoading } = useAuth0();
-    console.log('esto es user: ', user);
     const [newUser, setNewUser] = useState("");
     const [buttonModify, setButtonModify] = useState("");
     const [errorSubmit, setErrorSubmit] = useState("");
@@ -72,7 +59,7 @@ function Profile() {
 
 
             axios
-                .get("https://iberahotelsapi-production.up.railway.app/users")
+                .get(REACT_APP_GET_ALL_USERS)
                 .then((res) => {
                     console.log("get axios profile", res.data);
 
@@ -109,15 +96,10 @@ function Profile() {
                 setButtonModify("modify")
             } else {
                 setButtonModify("")
-                errorBirthday = "";
                 errorBsuccessful = "";
-                errorName = "";
                 errorNsuccessful = "";
-                errorLastName = "";
                 errorLNsuccessful = "";
-                errorMobile = "";
                 errorMsuccessful = "";
-                errorNation = "";
                 errorNTsuccessful = "";
                 setInput({
                     first_name: "",
@@ -152,8 +134,7 @@ function Profile() {
             const selectYear = document.getElementById('select-year');
 
             if (
-                !errorName && !errorLastName && !errorMobile && errorMsuccessful &&
-                errorNsuccessful && errorLNsuccessful && input.nationality
+                errorMsuccessful && errorNsuccessful && errorLNsuccessful && input.nationality
                 && input.date_birth && selectDay.value && selectMonth.value && selectYear.value
             ) {
 
@@ -177,71 +158,29 @@ function Profile() {
         };
 
 
-        // #12 53.84 src/Components/Profile.js
-        // ﻿#12 53.84   Line 183:17:  'errorBirthday' is already defined      no-redeclare
-        // ﻿#12 53.84   Line 184:17:  'errorBsuccessful' is already defined   no-redeclare        
-        // var errorBirthday = "error";
-        // var errorBsuccessful = "";
-
         if (input.date_birth.length >= 8) {
-            var errorBirthday = "";
             var errorBsuccessful = "error";
         };
 
 
-        var errorNTsuccessful = "";
-        var errorNation = "error";
-
-        // #13 36.94 src/Components/Profile.js
-        // ﻿#13 36.94   Line 194:17:  'errorNTsuccessful' is already defined  no-redeclare
-        // ﻿#13 36.94   Line 195:17:  'errorNation' is already defined        no-redeclare
-        // if (input.nationality) {
-        //     var errorNTsuccessful = "error";
-        //     var errorNation = "";
-        // };
-
-
-        var errorName = "";
-        var errorNsuccessful = "";
-
-        if (input.first_name.length > 0 && input.first_name.length < 3) {
-            errorName = "error"
+        if (input.nationality) {
+            var errorNTsuccessful = "error";
         };
+
 
         if (input.first_name.length >= 3) {
-            errorNsuccessful = "error"
+            var errorNsuccessful = "error"
         };
 
-
-
-        var errorLastName = "";
-        var errorLNsuccessful = "";
-
-        if (input.last_name.length > 0 && input.last_name.length < 3) {
-            errorLastName = "error"
-        };
 
         if (input.last_name.length >= 3) {
-            errorLNsuccessful = "error"
+            var errorLNsuccessful = "error"
         };
 
 
-
-        var errorMobile = "";
-        var errorMsuccessful = "";
-
-        if (input.mobile.length > 0 && input.mobile.length < 10 && isNaN(input.mobile)) {
-            errorMobile = "error"
-        } else {
-
-            if (input.mobile.length >= 10 && !isNaN(input.mobile)) {
-                errorMsuccessful = "error"
-            } else {
-                errorMobile = "error"
-            }
-
+        if (input.mobile.length >= 10 && !isNaN(input.mobile)) {
+            var errorMsuccessful = "error"
         };
-
 
 
         return (
@@ -307,16 +246,9 @@ function Profile() {
 
                                 <FormLabel>Name</FormLabel>
                                 <Input type='text' value={input.first_name} name="first_name" onChange={handleInputChange} borderWidth='3px' />
-                                {!errorName && !errorNsuccessful ? (
+                                {!errorNsuccessful ? (
                                     <FormHelperText>
-                                        Complete Name.
-                                    </FormHelperText>
-                                ) : (
-                                    <FormErrorMessage></FormErrorMessage>
-                                )}
-                                {errorName && !errorNsuccessful ? (
-                                    <FormHelperText color="blue">
-                                        Error: Name should have 3 letters.
+                                        Name should have 3 letters.
                                     </FormHelperText>
                                 ) : (
                                     <FormErrorMessage></FormErrorMessage>
@@ -331,16 +263,9 @@ function Profile() {
 
                                 <FormLabel>Last Name</FormLabel>
                                 <Input type='text' value={input.last_name} name="last_name" onChange={handleInputChange} borderWidth='3px' />
-                                {!errorLastName && !errorLNsuccessful ? (
+                                {!errorLNsuccessful ? (
                                     <FormHelperText>
-                                        Complete Last Name.
-                                    </FormHelperText>
-                                ) : (
-                                    <FormErrorMessage></FormErrorMessage>
-                                )}
-                                {errorLastName && !errorLNsuccessful ? (
-                                    <FormHelperText color="blue">
-                                        Error: Last Name should have 3 letters.
+                                        Last Name should have 3 letters.
                                     </FormHelperText>
                                 ) : (
                                     <FormErrorMessage></FormErrorMessage>
@@ -357,16 +282,9 @@ function Profile() {
 
                                     <FormLabel>Mobile</FormLabel>
                                     <Input type='text' value={input.mobile} name="mobile" onChange={handleInputChange} borderWidth='3px' />
-                                    {!errorMobile && !errorMsuccessful ? (
+                                    {!errorMsuccessful ? (
                                         <FormHelperText>
-                                            Complete Mobile.
-                                        </FormHelperText>
-                                    ) : (
-                                        <FormErrorMessage></FormErrorMessage>
-                                    )}
-                                    {errorMobile && !errorMsuccessful ? (
-                                        <FormHelperText color="blue">
-                                            Error: Mobile should have 10 numbers.
+                                            Mobile should have 10 numbers.
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage></FormErrorMessage>
@@ -416,14 +334,14 @@ function Profile() {
 
                                 <FormControl>
 
-                                    {errorBirthday && !errorBsuccessful ? (
+                                    {!errorBsuccessful ? (
                                         <FormHelperText>
                                             Complete Birthday.
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage></FormErrorMessage>
                                     )}
-                                    {!errorBirthday && errorBsuccessful ? (
+                                    {errorBsuccessful ? (
                                         <FormHelperText color="red" className="letter" fontWeight='bold'>
                                             Successful
                                         </FormHelperText>
@@ -453,14 +371,14 @@ function Profile() {
 
                                 <FormControl>
 
-                                    {errorNation && !errorNTsuccessful ? (
+                                    {!errorNTsuccessful ? (
                                         <FormHelperText>
                                             Complete Nationality.
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage></FormErrorMessage>
                                     )}
-                                    {!errorNation && errorNTsuccessful ? (
+                                    {errorNTsuccessful ? (
                                         <FormHelperText color="red" className="letter" fontWeight='bold'>
                                             Successful
                                         </FormHelperText>
