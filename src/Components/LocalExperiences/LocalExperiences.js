@@ -16,7 +16,7 @@ function LocalExperiences() {
             })
             .catch((err) => console.log(err))
 
-    });
+    }, []);
 
     console.log(activities);
 

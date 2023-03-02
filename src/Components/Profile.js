@@ -23,7 +23,8 @@ function Profile() {
         last_name: "",
         date_birth: "",
         mobile: "",
-        nationality: ""
+        nationality: "",
+        image: ""
     });
 
     const PaisesArray = ["Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania", "Bolivia", "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Ciudad del Vaticano", "Colombia", "Comoras", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba", "Dinamarca", "Dominica", "Ecuador", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia", "Eslovenia", "España", "Estados Unidos", "Estonia", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guyana", "Guinea", "Guinea ecuatorial", "Guinea-Bisáu", "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón", "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Laos", "Lesoto", "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro", "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos", "Palestina", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricana", "República Checa", "República de Macedonia", "República del Congo", "República Democrática del Congo", "República Dominicana", "República Sudafricana", "Ruanda", "Rumanía", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka", "Suazilandia", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania", "Tayikistán", "Timor Oriental", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue"];
@@ -101,12 +102,14 @@ function Profile() {
                 errorLNsuccessful = "";
                 errorMsuccessful = "";
                 errorNTsuccessful = "";
+                errorIsuccessful = "";
                 setInput({
                     first_name: "",
                     last_name: "",
                     date_birth: "",
                     mobile: "",
-                    nationality: ""
+                    nationality: "",
+                    image: ""
                 })
             }
 
@@ -180,6 +183,10 @@ function Profile() {
 
         if (input.mobile.length >= 10 && !isNaN(input.mobile)) {
             var errorMsuccessful = "error"
+        };
+
+        if (input.image.length >= 3) {
+            var errorIsuccessful = "error"
         };
 
 
@@ -278,25 +285,40 @@ function Profile() {
                                     <FormErrorMessage></FormErrorMessage>
                                 )}
 
-                                <FormControl>
+                                <FormLabel>Mobile</FormLabel>
+                                <Input type='text' value={input.mobile} name="mobile" onChange={handleInputChange} borderWidth='3px' />
+                                {!errorMsuccessful ? (
+                                    <FormHelperText>
+                                        Mobile should have 10 numbers.
+                                    </FormHelperText>
+                                ) : (
+                                    <FormErrorMessage></FormErrorMessage>
+                                )}
+                                {errorMsuccessful ? (
+                                    <FormHelperText color="red" className="letter" fontWeight='bold'>
+                                        Successful
+                                    </FormHelperText>
+                                ) : (
+                                    <FormErrorMessage></FormErrorMessage>
+                                )}
 
-                                    <FormLabel>Mobile</FormLabel>
-                                    <Input type='text' value={input.mobile} name="mobile" onChange={handleInputChange} borderWidth='3px' />
-                                    {!errorMsuccessful ? (
-                                        <FormHelperText>
-                                            Mobile should have 10 numbers.
-                                        </FormHelperText>
-                                    ) : (
-                                        <FormErrorMessage></FormErrorMessage>
-                                    )}
-                                    {errorMsuccessful ? (
-                                        <FormHelperText color="red" className="letter" fontWeight='bold'>
-                                            Successful
-                                        </FormHelperText>
-                                    ) : (
-                                        <FormErrorMessage></FormErrorMessage>
-                                    )}
-                                </FormControl>
+                                <FormLabel>Image</FormLabel>
+                                <Input type='text' value={input.image} name="image" onChange={handleInputChange} borderWidth='3px' />
+                                {!errorIsuccessful ? (
+                                    <FormHelperText>
+                                        Complete Image
+                                    </FormHelperText>
+                                ) : (
+                                    <FormErrorMessage></FormErrorMessage>
+                                )}
+                                {errorIsuccessful ? (
+                                    <FormHelperText color="red" className="letter" fontWeight='bold'>
+                                        Successful
+                                    </FormHelperText>
+                                ) : (
+                                    <FormErrorMessage></FormErrorMessage>
+                                )}
+
 
                             </FormControl>
 
