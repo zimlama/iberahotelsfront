@@ -1,22 +1,22 @@
-// #13 76.10 src/Components/LocalExperiences/LocalExperiences.js
-// ﻿#13 76.10   Line 1:28:  'useState' is defined but never used  no-unused-vars
-// ﻿#13 76.10   Line 4:10:  'Box' is defined but never used       no-unused-vars
-// import React, { useEffect, useState } from "react";
-// import { Box } from "@chakra-ui/react";
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 import CardActivities from "../CardActivities/CardActivities.js";
-
-import { getServices } from "../../Redux/actions/services";
+import axios from "axios";
+const { REACT_APP_GET_ALL_SERVICES } = process.env;
 
 function LocalExperiences() {
-    const dispatch = useDispatch();
 
-    const activities = useSelector((state) => state.services);
+    const [activities, setActivities] = useState([]);
 
     useEffect(() => {
-        dispatch(getServices());
-    }, [dispatch]);
+
+        axios.get(REACT_APP_GET_ALL_SERVICES)
+            .then((res) => {
+                console.log(res)
+                setActivities(res.data)
+            })
+            .catch((err) => console.log(err))
+
+    });
 
     console.log(activities);
 
