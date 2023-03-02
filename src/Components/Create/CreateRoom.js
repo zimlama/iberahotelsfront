@@ -12,7 +12,10 @@ const { REACT_APP_GET_ALL_USERS, REACT_APP_CREATE_ROOMS, REACT_APP_FRONT } = pro
 function CreateRoom() {
 
   const [logUser, setLogUser] = useState("users")
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  // #13 76.10 src/Components/Create/CreateRoom.js
+  // ﻿#13 76.10   Line 15:34:  'isLoading' is assigned a value but never used  no-unused-vars
+  // const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
   const [input, setInput] = useState({
     name: "",
     bed_quantity: "",

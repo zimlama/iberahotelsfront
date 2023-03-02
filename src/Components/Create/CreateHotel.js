@@ -19,9 +19,14 @@ import {
   FormControl,
 } from '@chakra-ui/react';
 
-import { createHotel } from "../../Redux/actions/hotels";
+// #13 76.10 src/Components/Create/CreateHotel.js
+// ﻿#13 76.10   Line 22:10:  'createHotel' is defined but never used               no-unused-vars
+// import { createHotel } from "../../Redux/actions/hotels";
 import { useDispatch } from 'react-redux'
-import { Link, useNavigate } from "react-router-dom";
+// #13 76.10 src/Components/Create/CreateHotel.js
+// ﻿#13 76.10   Line 24:16:  'useNavigate' is defined but never used               no-unused-vars
+// import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Swal from 'sweetalert2'
 
 import { useAuth0 } from "@auth0/auth0-react";
@@ -59,12 +64,18 @@ export default function CreateHotelIbera() {
     window.location.href = REACT_APP_FRONT
   };
 
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  // #13 76.10 src/Components/Create/CreateHotel.js
+  // ﻿#13 76.10   Line 62:17:  'isAuthenticated' is assigned a value but never used  no-unused-vars
+  // ﻿#13 76.10   Line 62:34:  'isLoading' is assigned a value but never used        no-unused-vars
+  // const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user } = useAuth0();
 
   const breakpoint1 = useBreakpointValue({ base: 'md', md: 'lg' });
   const breakpoint2 = useBreakpointValue({ base: '44px', md: '60px' });
 
-  const dispatch = useDispatch()
+  // #13 76.10 src/Components/Create/CreateHotel.js
+  // ﻿#13 76.10   Line 67:9:   'dispatch' is assigned a value but never used         no-unused-vars
+  // const dispatch = useDispatch()
   // const navigate = useNavigate()
 
   const [input, setInput] = useState({
