@@ -1,4 +1,7 @@
-import React, { useEffect } from "react";
+// #13 28.49 src/Components/DetailsRoom/DetailsRoom.js
+// ﻿#13 28.49   Line 1:17:  'useEffect' is defined but never used          no-unused-vars
+// import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -17,7 +20,9 @@ import { useNavigate } from "react-router-dom";
 import { IoBedSharp } from "react-icons/io5";
 
 import allActions from "../../Redux/actions/";
-const { takeDate } = allActions;
+// #13 28.49 src/Components/DetailsRoom/DetailsRoom.js
+// ﻿#13 28.49   Line 20:9:  'takeDate' is assigned a value but never used  no-unused-vars
+// const { takeDate } = allActions;
 
 function DetailsRoom({
   idRooms,
@@ -27,7 +32,9 @@ function DetailsRoom({
   price,
   image,
 }) {
-  const dispatch = useDispatch();
+  // #13 28.49 src/Components/DetailsRoom/DetailsRoom.js
+  // ﻿#13 28.49   Line 30:9:  'dispatch' is assigned a value but never used  no-unused-vars
+  // const dispatch = useDispatch();
 
   const navigate = useNavigate();
   const dates = useSelector((state) => state.dates);
@@ -62,7 +69,7 @@ function DetailsRoom({
   for (let i = 0; i < bed_quantity; i++) {
     bed_icons.push(<Icon key={i} as={IoBedSharp} />);
   }
-  
+
   // #13 30.54 src/Components/DetailsRoom/DetailsRoom.js
   // ﻿#13 30.54   Line 68:6:  React Hook useEffect has a missing dependency: 'dispatch'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
   // useEffect(() => {
