@@ -1,7 +1,6 @@
-import { GET_CLOUDINARY_IMG } from "../action-types";
 import axios from "axios";
-import { GET_ROOMS_CITIES } from "../actions-types";
-const { REACT_APP_GET_ALL_ROOMS_CITIES } = process.env;
+import { GET_ROOMS_CITIES, GET_CLOUDINARY_IMG } from "../actions-types";
+const { REACT_APP_GET_ALL_ROOMS_CITIES, CLOUDINARY_URL } = process.env;
 
 export function getRoomsCities(payload) {
   return async function (dispatch) {
@@ -28,6 +27,7 @@ export function getRoomsCities(payload) {
   };
 }
 
+
 export async function fileUpload(file) {
   console.log("uploading file");
   if (!file) return alert("No files to upload");
@@ -36,7 +36,7 @@ export async function fileUpload(file) {
   formData.append("upload_preset", "cinema");
   formData.append("file", file);
   try {
-    const cloudResponse = await axios.post(REACT_APP_CLOUDINARY_URL, formData);
+    const cloudResponse = await axios.post(CLOUDINARY_URL, formData);
     console.log("file upload success");
     return cloudResponse.data.secure_url;
   } catch (error) {
