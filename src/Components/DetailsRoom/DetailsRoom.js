@@ -1,11 +1,5 @@
-// #13 52.26 src/Components/DetailsRoom/DetailsRoom.js
-// ﻿#13 52.26   Line 1:17:  'useEffect' is defined but never used          no-unused-vars
-// import React, { useEffect } from " react";
-import React from "react";
-// #13 63.85 src/Components/DetailsRoom/DetailsRoom.js
-// ﻿#13 63.85   Line 5:10:  'useDispatch' is defined but never used  no-unused-vars
-// import { useDispatch, useSelector } from "react-redux";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   Card,
@@ -22,12 +16,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import { IoBedSharp } from "react-icons/io5";
 
-// #13 63.85 src/Components/DetailsRoom/DetailsRoom.js
-// ﻿#13 63.85   Line 22:8:  'allActions' is defined but never used   no-unused-vars
-// import allActions from "../../Redux/actions/";
-// #13 52.26 src/Components/DetailsRoom/DetailsRoom.js
-// ﻿#13 52.26   Line 20:9:  'takeDate' is assigned a value but never used  no-unused-vars
-// const { takeDate } = allActions;
+import allActions from "../../Redux/actions/";
+const { takeDate } = allActions;
 
 function DetailsRoom({
   idRooms,
@@ -37,9 +27,7 @@ function DetailsRoom({
   price,
   image,
 }) {
-    // #13 52.26 src/Components/DetailsRoom/DetailsRoom.js
-    // ﻿#13 52.26   Line 30:9:  'dispatch' is assigned a value but never used  no-unused-vars
-    // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
   const dates = useSelector((state) => state.dates);
@@ -75,11 +63,9 @@ function DetailsRoom({
     bed_icons.push(<Icon key={i} as={IoBedSharp} />);
   }
 
-  // #13 31.06 src/Components/DetailsRoom/DetailsRoom.js
-  // ﻿#13 31.06   Line 68:6:  React Hook useEffect has a missing dependency: 'dispatch'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
-  // useEffect(() => {
-  //   dispatch(takeDate());
-  // }, []);
+  useEffect(() => {
+    dispatch(takeDate());
+  }, []);
 
   return (
     <Box mt="20px" padding="20px" boxSize="">

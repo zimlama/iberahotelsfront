@@ -9,9 +9,8 @@ import {
   CLEAN_FILTER,
   CREATE_HOTEL,
   GET_NAME_CITIES,
-  GET_ROOMS_CITIES,
-  GET_COMMENTS,
-  CREATE_COMMENTS,
+  REACT_APP_PASS_DATE,
+  REACT_APP_TAKE_DATE,
 } from "../actions-types/index";
 
 const initialState = {
@@ -21,8 +20,7 @@ const initialState = {
   hotelDetails: {},
   services: [],
   amenities: [],
-  citycheckinout: [],
-  comments: [],
+  dates: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -47,27 +45,11 @@ export default function rootReducer(state = initialState, action) {
           return e.city === action.payload;
         });
       }
-      // let filterCity = state.allHotels;
-      // let filtered= action.payload === ""
-      // ?filterCity
-      // :filterCity.filter((e)=>{
-      //   return e.city === action.payload
-      // }
-      // );
       return {
         ...state,
         hotels: filtered,
       };
     case FILTER_BY_STARS:
-      // let filterStar = [];
-      // if (action.payload === "") {
-      //   filterStar = state.allHotels;
-      // } else {
-      //   filterStar = state.allHotels.filter((e) => {
-      //     return e.stars === parseInt(action.payload);
-      //   });
-      // }
-      // let filterByStar = state.allHotels;
       let filterStar =
         action.payload === ""
           ? state.hotels
@@ -110,21 +92,21 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         hotels: action.payload,
       };
-    case GET_ROOMS_CITIES:
+    case REACT_APP_PASS_DATE:
       return {
         ...state,
-        citycheckinout: action.payload,
+        dates: action.payload,
       };
-    case GET_COMMENTS:
+    case REACT_APP_TAKE_DATE:
       return {
         ...state,
-        comments: action.payload,
       };
-    case CREATE_COMMENTS:
+    case GET_CLOUDINARY_IMG:
       return {
         ...state,
-        comments: [...state.comments, action.payload],
+        productImg: action.payload,
       };
+
     default:
       return state;
   }
