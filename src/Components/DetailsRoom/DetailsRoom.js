@@ -62,10 +62,12 @@ function DetailsRoom({
   for (let i = 0; i < bed_quantity; i++) {
     bed_icons.push(<Icon key={i} as={IoBedSharp} />);
   }
-
-  useEffect(() => {
-    dispatch(takeDate());
-  }, []);
+  
+  // #13 30.54 src/Components/DetailsRoom/DetailsRoom.js
+  // ﻿#13 30.54   Line 68:6:  React Hook useEffect has a missing dependency: 'dispatch'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  // useEffect(() => {
+  //   dispatch(takeDate());
+  // }, []);
 
   return (
     <Box mt="20px" padding="20px" boxSize="">
