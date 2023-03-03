@@ -11,6 +11,7 @@ import {
   GET_NAME_CITIES,
   REACT_APP_PASS_DATE,
   REACT_APP_TAKE_DATE,
+  GET_CLOUDINARY_IMG,
 } from "../actions-types/index";
 
 const initialState = {
