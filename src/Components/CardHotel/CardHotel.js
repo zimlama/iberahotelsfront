@@ -16,11 +16,12 @@ import {
 import { Link } from "react-router-dom";
 import { RiStarFill } from "react-icons/ri";
 
-function CardHotel({ id, name, city, img, stars, status }) {
+function CardHotel({ id, name, city, img, stars }) {
   const star = [];
   for (let i = 0; i < stars; i++) {
     star.push(<Icon key={i} as={RiStarFill} />);
   }
+
   return (
     <HStack display="inline-flex">
       <Box ml="20px" mb="19px">
@@ -47,23 +48,11 @@ function CardHotel({ id, name, city, img, stars, status }) {
           </CardBody>
           <Divider />
           <CardFooter>
-
-            {status === false ?
-
+            <Link to={`/hotels/${id}`}>
               <Button variant="solid" colorScheme="teal">
-                Disable
+                View more info
               </Button>
-
-              :
-
-              <Link to={`/hotels/${id}`}>
-                <Button variant="solid" colorScheme="teal">
-                  View more info
-                </Button>
-              </Link>
-
-            }
-
+            </Link>
           </CardFooter>
         </Card>
       </Box>

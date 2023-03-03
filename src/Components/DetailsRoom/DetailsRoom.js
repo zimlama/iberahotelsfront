@@ -1,3 +1,6 @@
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import {
   Card,
   CardBody,
@@ -9,11 +12,12 @@ import {
   Button,
   Icon,
   Box,
-  Select,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoBedSharp } from "react-icons/io5";
+
+import allActions from "../../Redux/actions/";
+const { takeDate } = allActions;
 
 function DetailsRoom({
   idRooms,
@@ -22,21 +26,29 @@ function DetailsRoom({
   description,
   price,
   image,
-  status
 }) {
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
-  const [dayqty, setDayqty] = useState("");
+  const dates = useSelector((state) => state.dates);
+  console.log(dates);
+
+  function restarFechas(fecha1, fecha2) {
+    let diferencia = new Date(fecha2).getTime() - new Date(fecha1).getTime();
+    let dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    return dias;
+  }
+
+  let diferenciaEnDias = restarFechas(dates[0], dates[1]);
 
   function handleBanana() {
     let room = {
-      idRooms: idRooms, //en mp es id
-      name: name, // aca es title en mp
+      idRooms: idRooms,
+      name: name,
       bed_quantity: bed_quantity,
-      price: price, //aca es unit_price
-      image: image, //picture_url
-      quantity: dayqty,
-
-      //
+      price: price,
+      image: image,
+      quantity: diferenciaEnDias,
     };
 
     window.localStorage.setItem("roomcart", JSON.stringify(room)); //a localSt solo le podemos enviar strings
@@ -46,33 +58,32 @@ function DetailsRoom({
     );
     return navigate("/shoppingcart");
   }
-  function handleSelect(e) {
-    setDayqty(e.target.value);
+  const bed_icons = [];
+  for (let i = 0; i < bed_quantity; i++) {
+    bed_icons.push(<Icon key={i} as={IoBedSharp} />);
   }
+
+  useEffect(() => {
+    dispatch(takeDate());
+  }, []);
+
   return (
-    <Box mt="20px" padding="20px">
+    <Box mt="20px" padding="20px" boxSize="">
       <Card
         direction={{ base: "column", sm: "row" }}
         overflow="hidden"
         variant="outline"
       >
         <Image
-          objectFit="cover"
-          maxW={{ base: "80%", sm: "150px" }}
+          objectFit="fill"
+          maxW={{ base: "100%", sm: "450px" }}
+          mb="40px"
+          mt="30px"
+          padding="20px"
+          ml="10px"
           alt="hotelIbera"
           src={image[0]}
         />
-        {/* {image &&
-          image.map((i) => {
-            return (
-              <Image
-                objectFit="cover"
-                maxW={{ base: "100%", sm: "200px" }}
-                alt="hotelIbera"
-                src={i}
-              />
-            );
-          })} */}
 
         <Stack>
           <CardBody ml="40px">
@@ -81,8 +92,7 @@ function DetailsRoom({
             </Heading>
 
             <Text fontSize="xl" py="12" mb="50px">
-              {bed_quantity} beds
-              <Icon ml="30px" as={IoBedSharp}></Icon>
+              Beds quantity <Text color="teal">{bed_icons}</Text>
               <Text mt="10px" fontSize="md">
                 {description}
               </Text>
@@ -94,31 +104,15 @@ function DetailsRoom({
           </CardBody>
 
           <CardFooter>
-
-            {status === false ?
-
-              <Button variant="solid" colorScheme="teal">
-                Disable
-              </Button>
-
-              :
-
-              <Button
-                variant="solid"
-                colorScheme="teal"
-                onClick={() => handleBanana()}
-              >
-                Reserve
-              </Button>
-
-            }
-
-            <Select onChange={(e) => handleSelect(e)}>
-              <option value={1}>1</option>
-              <option value={2}>2</option>
-              <option value={3}>3</option>
-            </Select>
-
+            <Button
+              ml="70%"
+              variant="solid"
+              colorScheme="teal"
+              onClick={() => handleBanana()}
+            >
+              Reserve
+            </Button>
+            <Text>Days: {diferenciaEnDias}</Text>
           </CardFooter>
         </Stack>
       </Card>

@@ -22,34 +22,32 @@ import DetailsRoom from "../DetailsRoom/DetailsRoom";
 
 const { getHotelById, getAmenities } = allActions;
 
-function HotelDetails(props) {
-  const { id } = useParams();
-
+function HotelDetails() {
   const dispatch = useDispatch();
+  const { id } = useParams();
+  const stars = [];
+
+  const dtHotel = useSelector((state) => state.hotelDetails);
+
+  for (let i = 0; i < dtHotel.stars; i++) {
+    stars.push(<Icon key={i} as={RiStarFill} />);
+  }
 
   useEffect(() => {
     dispatch(getHotelById(id));
     dispatch(getAmenities());
   }, [dispatch, id]);
 
-  const dtHotel = useSelector((state) => state.hotelDetails);
-  //const amenity = useSelector((state) => state.amenities);
-  console.log("aca esta dtHotels", dtHotel);
-  const stars = [];
-  for (let i = 0; i < dtHotel.stars; i++) {
-    stars.push(<Icon key={i} as={RiStarFill} />);
-  }
   return (
     <Box>
       <Grid templateColumns="1fr 1fr">
         <Box>
-          {" "}
           <Heading color="teal" size="xl" mt="30px">
             {dtHotel.city}
           </Heading>
           <Text py="12">
             {dtHotel.name}
-            <Text fontSize={20}> {stars} Stars Quality </Text>
+            {stars && <Text fontSize={20}> {stars} Stars Quality </Text>}{" "}
           </Text>
           <Flex display="inline-flex">
             <Text as="b" fontSize="xl" mb="30px" mr="30px" ml="30px">
@@ -97,7 +95,6 @@ function HotelDetails(props) {
                 image={r.image}
                 name={r.name}
                 price={r.price}
-                status={r.status}
               />
             );
           })}

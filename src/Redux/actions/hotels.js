@@ -9,6 +9,8 @@ import {
   CLEAN_FILTER,
   CREATE_HOTEL,
   GET_NAME_CITIES,
+  REACT_APP_PASS_DATE,
+  REACT_APP_TAKE_DATE,
 } from "../actions-types/index";
 
 const { REACT_APP_GET_ALL_HOTELS, REACT_APP_POST_HOTELS } = process.env;
@@ -24,14 +26,6 @@ export function getAllHotels() {
       console.error(error);
     }
   };
-  // return async function(dispatch){
-  //     let json = await axios('http://localhost:3010/hotels');
-  //     // console.log(json)
-  //     return dispatch({
-  //         type:'GET_HOTELS',
-  //         payload: json.data
-  //     })
-  // }
 }
 
 export function filterHotelsByCity(city) {
@@ -58,11 +52,11 @@ export function cleanFilter(id) {
 
 export function createHotel(payload) {
   return async function (dispatch) {
-    console.log("input que recibo", payload); //!!!!!!!!!!!!!!!!
+    console.log("input que recibo", payload);
     try {
       console.log("ENTRE EN TRY");
       const newHotel = await axios.post(REACT_APP_POST_HOTELS, payload);
-      console.log("input que muestro", newHotel.data); //!!!!!!!!!!!!!!
+      console.log("input que muestro", newHotel.data);
       return dispatch({
         type: CREATE_HOTEL,
         payload: newHotel.data,
@@ -73,11 +67,14 @@ export function createHotel(payload) {
   };
 }
 
-export function getCity(payload) {
+export function getCity(city, inDate, outDate) {
+  console.log(inDate);
+  console.log(outDate);
   return async function (dispatch) {
     try {
-      let json = await axios.get(`${REACT_APP_GET_ALL_HOTELS}?city=${payload}`);
-      console.log("PAPANATA", json);
+      let json = await axios.get(`${REACT_APP_GET_ALL_HOTELS}?city=${city}`);
+      json.data.forEach((h) => ((h.checkIn = inDate), (h.checkOut = outDate)));
+
       return dispatch({
         type: GET_NAME_CITIES,
         payload: json.data,
@@ -87,3 +84,16 @@ export function getCity(payload) {
     }
   };
 }
+
+export const passDate = (checkIn, checkOut) => {
+  return {
+    type: REACT_APP_PASS_DATE,
+    payload: [checkIn, checkOut],
+  };
+};
+
+export const takeDate = () => {
+  return {
+    type: REACT_APP_TAKE_DATE,
+  };
+};
