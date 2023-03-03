@@ -14,29 +14,7 @@ import {
 } from "@chakra-ui/react";
 
 function CreateComent() {
-  // #13 33.48 src/Components/CreateComment/CreateComment.js
-  // ﻿#13 33.48   Line 17:10:  'name' is assigned a value but never used       no-unused-vars
-  // ﻿#13 33.48   Line 18:10:  'hotelName' is assigned a value but never used  no-unused-vars
-  // ﻿#13 33.48   Line 19:10:  'select' is assigned a value but never used     no-unused-vars
-  // ﻿#13 33.48   Line 20:10:  'text' is assigned a value but never used       no-unused-vars
-  // const [name, setName] = useState("");
-  // const [hotelName, setHotelName] = useState("");
-  // const [select, setSelect] = useState(1);
-  // const [text, setText] = useState("");
-
-  // function handleHotelName(e) {
-  //   setHotelName(e.target.name);
-  // }
-  // function handleName(e) {
-  //   setName(e.target.name);
-  // }
-  // function handleSelect(e) {
-  //   setSelect(e.target.name);
-  // }
-  // function handleComment(e) {
-  //   setText(e.target.name);
-  // }
-
+  
   function handleSubmit(e) {
     e.preventDefault();
   }
@@ -72,6 +50,29 @@ function CreateComent() {
 
 export default CreateComent;
 
+
+// #13 33.48 src/Components/CreateComment/CreateComment.js
+  // ﻿#13 33.48   Line 17:10:  'name' is assigned a value but never used       no-unused-vars
+  // ﻿#13 33.48   Line 18:10:  'hotelName' is assigned a value but never used  no-unused-vars
+  // ﻿#13 33.48   Line 19:10:  'select' is assigned a value but never used     no-unused-vars
+  // ﻿#13 33.48   Line 20:10:  'text' is assigned a value but never used       no-unused-vars
+  // const [name, setName] = useState("");
+  // const [hotelName, setHotelName] = useState("");
+  // const [select, setSelect] = useState(1);
+  // const [text, setText] = useState("");
+
+  // function handleHotelName(e) {
+  //   setHotelName(e.target.name);
+  // }
+  // function handleName(e) {
+  //   setName(e.target.name);
+  // }
+  // function handleSelect(e) {
+  //   setSelect(e.target.name);
+  // }
+  // function handleComment(e) {
+  //   setText(e.target.name);
+  // }
 
 {/* <Input
                   onChange={(e) => handleName(e)}
