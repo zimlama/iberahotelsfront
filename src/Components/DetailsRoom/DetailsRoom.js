@@ -2,7 +2,11 @@
 // ﻿#13 28.49   Line 1:17:  'useEffect' is defined but never used          no-unused-vars
 // import React, { useEffect } from "react";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+
+// #13 32.83 src/Components/DetailsRoom/DetailsRoom.js
+// ﻿#13 32.83   Line 5:10:  'useDispatch' is defined but never used  no-unused-vars
+// import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import {
   Card,
@@ -19,7 +23,9 @@ import {
 import { useNavigate } from "react-router-dom";
 import { IoBedSharp } from "react-icons/io5";
 
-import allActions from "../../Redux/actions/";
+// #13 32.83 src/Components/DetailsRoom/DetailsRoom.js
+// ﻿#13 32.83   Line 22:8:  'allActions' is defined but never used   no-unused-vars
+// import allActions from "../../Redux/actions/";
 // #13 28.49 src/Components/DetailsRoom/DetailsRoom.js
 // ﻿#13 28.49   Line 20:9:  'takeDate' is assigned a value but never used  no-unused-vars
 // const { takeDate } = allActions;
