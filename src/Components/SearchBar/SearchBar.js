@@ -13,7 +13,7 @@ import "./searchbar.css";
 import allActions from "../../Redux/actions";
 const { getAllHotels, getCity, passDate } = allActions;
 
-function SearchBar() {
+function SearchBar({ setEnable }) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllHotels());
@@ -31,6 +31,7 @@ function SearchBar() {
   function buttonSubmit(e) {
     console.log(e);
     e.preventDefault();
+    setEnable(true);
     dispatch(getCity(city));
     dispatch(passDate(inDate, outDate));
     setCity("");
@@ -58,7 +59,7 @@ function SearchBar() {
   return (
     <Box
       borderRadius="8px"
-      bgColor="teal"
+      bg="teal"
       opacity="0.9"
       paddingBottom="10px"
       paddingTop="10px"
@@ -70,8 +71,8 @@ function SearchBar() {
           <Input
             mr="300px"
             width="500px"
-            backgroundColor="white"
-            placeHolder="Destination"
+            bg="white"
+            placeholder="Destination"
             type="text"
             value={city}
             id="input-filter"
@@ -83,7 +84,7 @@ function SearchBar() {
               <FormLabel color="white">Check-In</FormLabel>
               <input
                 className="checkin"
-                bgColor="white"
+                bg="white"
                 type="date"
                 value={inDate}
                 min={today}
@@ -94,7 +95,7 @@ function SearchBar() {
               <FormLabel color="white">Check-out</FormLabel>
               <input
                 className="checkin"
-                bgColor="white"
+                bg="white"
                 type="date"
                 value={outDate}
                 min={today}

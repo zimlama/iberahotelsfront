@@ -180,7 +180,7 @@ function ShoppingCart() {
 
   return (
     <Box>
-      <Box align="center" backgroundColor="teal">
+      <Box align="center" bg="teal">
         <Heading size="md" mt="30px" mb="30px" color="white">
           {" "}
           Your shopping cart
@@ -276,13 +276,3 @@ function ShoppingCart() {
 }
 
 export default ShoppingCart;
-/*{
-  /*id: 1,
-        item: "monto total",
-        quantity: 1,
-        price: totalPrice,*/
-/*console.log("orden aqui", res.data);
-          console.log("id aqui", res.data.id);
-          console.log("item aqui", res.data.item);
-          console.log("quantity aqui", res.data.quantity);
-          console.log("price aqui", res.data.price);*/

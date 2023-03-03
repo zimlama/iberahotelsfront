@@ -35,8 +35,7 @@ function Home() {
               left="35%"
               textAlign="center"
             >
-              {" "}
-              Unique places in Argentina{" "}
+              Unique places in Argentina
             </Text>
           </Box>
           <Link paddingTop="50px" href="/destinations">
@@ -46,7 +45,7 @@ function Home() {
                 top="400px"
                 colorScheme="teal"
                 left="46%"
-                backgroundColor="white"
+                bg="white"
                 variant="outline"
                 size="lg"
                 position="absolute"
@@ -60,24 +59,23 @@ function Home() {
           <Image src={homeImage3} />
         </Box>
       </Grid>
-      <Box height="4px" width="100%" backgroundColor="teal" />
+      <Box height="4px" width="100%" bg="teal" />
       <Box marginTop="60px">
         <Text fontSize="5xl" color="teal" fontWeight="bold">
-          Our best Offers{" "}
+          Our best Offers
         </Text>
       </Box>
-      <Box height="2px" width="50%" ml="25%" backgroundColor="teal" />
+      <Box height="2px" width="50%" ml="25%" bg="teal" />
       <Grid templateColumns="1fr 1fr">
         <Box marginTop="60px">
           <Text fontSize="3xl"> Stay 3 nights, pay 2</Text>
           <Text padding="20px">
             Reserve 2 night this month in any of our hotels and get one night
-            free. Check availability{" "}
+            free. Check availability
           </Text>
           <Link>
             <Button colorScheme="teal" variant="solid" size="md">
-              {" "}
-              Learn More{" "}
+              Learn More
             </Button>
           </Link>
         </Box>
@@ -89,8 +87,7 @@ function Home() {
           </Text>
           <Link>
             <Button colorScheme="teal" variant="solid" size="md">
-              {" "}
-              Learn More{" "}
+              Learn More
             </Button>
           </Link>
         </Box>
@@ -126,13 +123,7 @@ function Home() {
           </Link>
         </Box>
       </Grid>
-      <Box
-        height="2px"
-        width="50%"
-        ml="25%"
-        backgroundColor="teal"
-        marginTop="60px"
-      />
+      <Box height="2px" width="50%" ml="25%" bg="teal" marginTop="60px" />
       <Grid templateColumns="1fr 1fr">
         <Box marginTop="90px">
           <Image
@@ -144,46 +135,32 @@ function Home() {
           />
         </Box>
         <Box marginTop="120px" mr="150px">
-          <Text marginTop="40px" fontSize="3xl" fontWeight="bold" color="teal">
+          <Text fontSize="3xl" fontWeight="bold" color="teal">
             Co-Working Spot!
           </Text>
           <Icon as={FcWiFiLogo} boxSize={12} />
           <Text marginTop="10px" fontSize="2xl">
-            {" "}
             We offer high-speed Wi-Fi in all our hotels and exclusive and comfy
-            co-workins spot{" "}
+            co-workins spot
           </Text>
         </Box>
       </Grid>
-      <Box
-        height="2px"
-        width="50%"
-        ml="25%"
-        backgroundColor="teal"
-        marginTop="10px"
-      />
+      <Box height="2px" width="50%" ml="25%" bg="teal" marginTop="10px" />
 
       <Grid templateColumns="1fr 1fr">
         <Box marginTop="85px">
           <Link href="/activities">
-            <Text
-              marginTop="70px"
-              fontSize="3xl"
-              fontWeight="bold"
-              color="teal"
-            >
+            <Text fontSize="3xl" fontWeight="bold" color="teal">
               Local Experiences
             </Text>
           </Link>
           <Text ml="40px" marginTop="30px" fontSize="2xl">
-            {" "}
             We have designed all the activities adapting exclusively to the
             needs of our guests. Walking tours, Horse riding, Trekkings and much
-            more!{" "}
+            more!
           </Text>
           <Link href="/activities">
             <Button mt="20px" colorScheme="teal" variant="solid" size="md">
-              {" "}
               See all activities
             </Button>
           </Link>
@@ -193,29 +170,21 @@ function Home() {
           <Image src={trekking} borderRadius="8px" boxSize="70%" ml="80px" />
         </Box>
       </Grid>
-      <Box height="2px" width="50%" ml="25%" backgroundColor="teal" />
+      <Box height="2px" width="50%" ml="25%" bg="teal" />
 
       <Box mb="40px">
         <Text ml="40px" marginTop="40px" fontSize="3xl">
-          {" "}
           Discover this amazing country in a different way !
         </Text>
         <Text ml="40px" marginTop="40px" fontSize="2xl">
-          {" "}
-          Ibera Hotels has rooms for all types of travellers.{" "}
+          Ibera Hotels has rooms for all types of travellers.
         </Text>
       </Box>
-      <Box
-        height="2px"
-        width="50%"
-        ml="25%"
-        backgroundColor="teal"
-        marginTop="3px"
-      />
+      <Box height="2px" width="50%" ml="25%" bg="teal" marginTop="3px" />
       <Grid templateColumns="1fr 1fr" mt="30px">
         <Box>
           <Text fontSize="3xl" color="teal" mt="40px">
-            Exclusive offers{" "}
+            Exclusive offers
           </Text>
         </Box>
         <Box mt="40px">
@@ -229,13 +198,7 @@ function Home() {
           </Link>
         </Box>
       </Grid>
-      <Box
-        height="2px"
-        width="50%"
-        ml="25%"
-        backgroundColor="teal"
-        marginTop="50px"
-      />
+      <Box height="2px" width="50%" ml="25%" bg="teal" marginTop="50px" />
     </div>
   );
 }

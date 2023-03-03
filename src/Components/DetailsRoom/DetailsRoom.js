@@ -1,12 +1,6 @@
-// #13 28.49 src/Components/DetailsRoom/DetailsRoom.js
-// ﻿#13 28.49   Line 1:17:  'useEffect' is defined but never used          no-unused-vars
-// import React, { useEffect } from "react";
-import React from "react";
-
-// #13 32.83 src/Components/DetailsRoom/DetailsRoom.js
-// ﻿#13 32.83   Line 5:10:  'useDispatch' is defined but never used  no-unused-vars
-// import { useDispatch, useSelector } from "react-redux";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { v4 } from "uuid";
 
 import {
   Card,
@@ -23,12 +17,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import { IoBedSharp } from "react-icons/io5";
 
-// #13 32.83 src/Components/DetailsRoom/DetailsRoom.js
-// ﻿#13 32.83   Line 22:8:  'allActions' is defined but never used   no-unused-vars
-// import allActions from "../../Redux/actions/";
-// #13 28.49 src/Components/DetailsRoom/DetailsRoom.js
-// ﻿#13 28.49   Line 20:9:  'takeDate' is assigned a value but never used  no-unused-vars
-// const { takeDate } = allActions;
+import allActions from "../../Redux/actions/";
+const { takeDate } = allActions;
 
 function DetailsRoom({
   idRooms,
@@ -38,9 +28,7 @@ function DetailsRoom({
   price,
   image,
 }) {
-  // #13 28.49 src/Components/DetailsRoom/DetailsRoom.js
-  // ﻿#13 28.49   Line 30:9:  'dispatch' is assigned a value but never used  no-unused-vars
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
   const dates = useSelector((state) => state.dates);
@@ -52,7 +40,8 @@ function DetailsRoom({
     return dias;
   }
 
-  let diferenciaEnDias = restarFechas(dates[0], dates[1]);
+  let diferenciaEnDias;
+  if (dates) diferenciaEnDias = restarFechas(dates[0], dates[1]);
 
   function handleBanana() {
     let room = {
@@ -73,14 +62,12 @@ function DetailsRoom({
   }
   const bed_icons = [];
   for (let i = 0; i < bed_quantity; i++) {
-    bed_icons.push(<Icon key={i} as={IoBedSharp} />);
+    bed_icons.push(<Icon key={v4()} as={IoBedSharp} />);
   }
 
-  // #13 30.54 src/Components/DetailsRoom/DetailsRoom.js
-  // ﻿#13 30.54   Line 68:6:  React Hook useEffect has a missing dependency: 'dispatch'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
-  // useEffect(() => {
-  //   dispatch(takeDate());
-  // }, []);
+  useEffect(() => {
+    dispatch(takeDate());
+  }, [dispatch]);
 
   return (
     <Box mt="20px" padding="20px" boxSize="">
@@ -113,7 +100,6 @@ function DetailsRoom({
               </Text>
             </Text>
             <Text mr="70%" color="teal" mt="10px">
-              {" "}
               Price per night: ${price}
             </Text>
           </CardBody>
@@ -127,7 +113,9 @@ function DetailsRoom({
             >
               Reserve
             </Button>
-            <Text>Days: {diferenciaEnDias}</Text>
+            <Box mt={"7px"} ml={"0.7rem"}>
+              <Text>Days Selected: {diferenciaEnDias}</Text>
+            </Box>
           </CardFooter>
         </Stack>
       </Card>

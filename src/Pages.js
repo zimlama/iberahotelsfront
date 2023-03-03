@@ -21,19 +21,20 @@ function Pages({ page, hotelsPerPage, hotels, currentPage }) {
       <Button
         mr="5px"
         color="teal"
-        backgroundColor="white"
+        bg="white"
         size="sm"
         onClick={() => handleNext()}
       >
         {" "}
         Prev
       </Button>
-      {pageNumbers?.map((number) => {
+      {pageNumbers?.map((number, index) => {
         return (
           <Button
+            key={index}
             color="teal"
             borderColor="teal"
-            backgroundColor="white"
+            bg="white"
             size="sm"
             onClick={() => page(number)}
           >
@@ -44,7 +45,7 @@ function Pages({ page, hotelsPerPage, hotels, currentPage }) {
       <Button
         ml="5px"
         color="teal"
-        backgroundColor="white"
+        bg="white"
         size="sm"
         onClick={() => handlePrev()}
       >
