@@ -12,12 +12,14 @@ import {
   Flex,
   Box,
   Button,
+  Card,
+  CardBody,
 } from "@chakra-ui/react";
 import { FiWifi } from "react-icons/fi";
 import { GiTowel, GiDesk } from "react-icons/gi";
 import { MdShower, MdChair } from "react-icons/md";
 import { RiStarFill } from "react-icons/ri";
-
+import { getComments } from "../../Redux/actions/comments";
 import DetailsRoom from "../DetailsRoom/DetailsRoom";
 
 const { getHotelById, getAmenities } = allActions;
@@ -28,6 +30,7 @@ function HotelDetails() {
   const stars = [];
 
   const dtHotel = useSelector((state) => state.hotelDetails);
+  const comments = useSelector((state) => state.comments);
 
   for (let i = 0; i < dtHotel.stars; i++) {
     stars.push(<Icon key={i} as={RiStarFill} />);
@@ -36,6 +39,7 @@ function HotelDetails() {
   useEffect(() => {
     dispatch(getHotelById(id));
     dispatch(getAmenities());
+    dispatch(getComments());
   }, [dispatch, id]);
 
   return (
@@ -80,24 +84,47 @@ function HotelDetails() {
       </Grid>
       <Box height="2px" width="50%" ml="25%" backgroundColor="teal" mt="20px" />
       <Box mt="20px">
-        <Text mr="70%" as="b" fontSize="xl" mt="60px" color="teal" size="4xl">
-          Types of Rooms available:{" "}
-        </Text>
-      </Box>
-      <Box mt="30px">
-        {dtHotel.rooms &&
-          dtHotel.rooms.map((r) => {
-            return (
-              <DetailsRoom
-                bed_quantity={r.bed_quantity}
-                description={r.description}
-                idRooms={r.idRooms}
-                image={r.image}
-                name={r.name}
-                price={r.price}
-              />
-            );
-          })}
+        {" "}
+        <Grid templateColumns="1fr 1fr" mb="70px">
+          <Box mt="30px" mr="40%">
+            {" "}
+            <Text>Read our reviews </Text>
+          </Box>
+          <Box mt="30px">
+            <Card
+              alignItems="center"
+              justifyContent="center"
+              mt="20px"
+              ml="40px"
+              mb="20px"
+            >
+              <CardBody>
+                {comments.comment}
+                {comments.rating}
+              </CardBody>
+            </Card>
+          </Box>
+        </Grid>
+        <Box mt="20px">
+          <Text mr="70%" as="b" fontSize="xl" mt="60px" color="teal" size="4xl">
+            Types of Rooms available:{" "}
+          </Text>
+        </Box>
+        <Box mt="30px">
+          {dtHotel.rooms &&
+            dtHotel.rooms.map((r) => {
+              return (
+                <DetailsRoom
+                  bed_quantity={r.bed_quantity}
+                  description={r.description}
+                  idRooms={r.idRooms}
+                  image={r.image}
+                  name={r.name}
+                  price={r.price}
+                />
+              );
+            })}
+        </Box>
       </Box>
     </Box>
   );

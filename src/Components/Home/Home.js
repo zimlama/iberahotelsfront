@@ -144,7 +144,7 @@ function Home() {
           />
         </Box>
         <Box marginTop="120px" mr="150px">
-          <Text marginTop="40px" fontSize="3xl" fontWeight="bold" color="teal">
+          <Text fontSize="3xl" fontWeight="bold" color="teal">
             Co-Working Spot!
           </Text>
           <Icon as={FcWiFiLogo} boxSize={12} />
@@ -166,12 +166,7 @@ function Home() {
       <Grid templateColumns="1fr 1fr">
         <Box marginTop="85px">
           <Link href="/activities">
-            <Text
-              marginTop="70px"
-              fontSize="3xl"
-              fontWeight="bold"
-              color="teal"
-            >
+            <Text fontSize="3xl" fontWeight="bold" color="teal">
               Local Experiences
             </Text>
           </Link>
