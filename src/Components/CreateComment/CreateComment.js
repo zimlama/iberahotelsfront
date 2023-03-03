@@ -1,13 +1,29 @@
-import React, { useState } from "react";
+// #13 32.65 src/Components/CreateComment/CreateComment.js
+// ﻿#13 32.65   Line 1:17:  'useState' is defined but never used  no-unused-vars
+// ﻿#13 32.65   Line 8:3:   'Input' is defined but never used     no-unused-vars
+// ﻿#13 32.65   Line 10:3:  'Select' is defined but never used    no-unused-vars
+// import React, { useState } from "react";
+// import {
+//   Box,
+//   Heading,
+//   Text,
+//   FormControl,
+//   FormLabel,
+//   Input,
+//   Grid,
+//   Select,
+//   Button,
+//   Card,
+//   CardBody,
+// } from "@chakra-ui/react";
+import React from "react";
 import {
   Box,
   Heading,
   Text,
   FormControl,
   FormLabel,
-  Input,
   Grid,
-  Select,
   Button,
   Card,
   CardBody,
@@ -74,42 +90,42 @@ export default CreateComent;
   //   setText(e.target.name);
   // }
 
-{/* <Input
-                  onChange={(e) => handleName(e)}
-                  mr="50%"
-                  width="38%"
-                  placeholder="First Name"
-                />
-                <FormLabel mt="20px" ml="25px">
-                  Hotel
-                </FormLabel>
-                <Input
-                  onChange={(e) => handleHotelName(e)}
-                  mr="50%"
-                  width="38%"
-                  placeholder="Hotel Name"
-                ></Input>
-                <Select
-                  onSelect={handleSelect}
-                  width="70%"
-                  mt="30px"
-                  ml="35px"
-                  mb="40px"
-                >
-                  <option>We want you to rate us!</option>
-                  <option value={1}>1</option>
-                  <option value={2}>2</option>
-                  <option value={3}>3</option>
-                  <option value={4}>4</option>
-                  <option value={5}>5</option>
-                </Select>
-                <Text mt="60px" mr="80%" as="i">
-                  {" "}
-                  Comments :{" "}
-                </Text>
-                <Input
-                  onChange={() => handleComment()}
-                  ml="10px"
-                  mt="20px"
-                  type="textarea"
-                ></Input> */}
+// {/* <Input
+//                   onChange={(e) => handleName(e)}
+//                   mr="50%"
+//                   width="38%"
+//                   placeholder="First Name"
+//                 />
+//                 <FormLabel mt="20px" ml="25px">
+//                   Hotel
+//                 </FormLabel>
+//                 <Input
+//                   onChange={(e) => handleHotelName(e)}
+//                   mr="50%"
+//                   width="38%"
+//                   placeholder="Hotel Name"
+//                 ></Input>
+//                 <Select
+//                   onSelect={handleSelect}
+//                   width="70%"
+//                   mt="30px"
+//                   ml="35px"
+//                   mb="40px"
+//                 >
+//                   <option>We want you to rate us!</option>
+//                   <option value={1}>1</option>
+//                   <option value={2}>2</option>
+//                   <option value={3}>3</option>
+//                   <option value={4}>4</option>
+//                   <option value={5}>5</option>
+//                 </Select>
+//                 <Text mt="60px" mr="80%" as="i">
+//                   {" "}
+//                   Comments :{" "}
+//                 </Text>
+//                 <Input
+//                   onChange={() => handleComment()}
+//                   ml="10px"
+//                   mt="20px"
+//                   type="textarea"
+//                 ></Input> */}
