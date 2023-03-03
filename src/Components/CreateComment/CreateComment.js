@@ -14,23 +14,28 @@ import {
 } from "@chakra-ui/react";
 
 function CreateComent() {
-  const [name, setName] = useState("");
-  const [hotelName, setHotelName] = useState("");
-  const [select, setSelect] = useState(1);
-  const [text, setText] = useState("");
+  // #13 33.48 src/Components/CreateComment/CreateComment.js
+  // ﻿#13 33.48   Line 17:10:  'name' is assigned a value but never used       no-unused-vars
+  // ﻿#13 33.48   Line 18:10:  'hotelName' is assigned a value but never used  no-unused-vars
+  // ﻿#13 33.48   Line 19:10:  'select' is assigned a value but never used     no-unused-vars
+  // ﻿#13 33.48   Line 20:10:  'text' is assigned a value but never used       no-unused-vars
+  // const [name, setName] = useState("");
+  // const [hotelName, setHotelName] = useState("");
+  // const [select, setSelect] = useState(1);
+  // const [text, setText] = useState("");
 
-  function handleHotelName(e) {
-    setHotelName(e.target.name);
-  }
-  function handleName(e) {
-    setName(e.target.name);
-  }
-  function handleSelect(e) {
-    setSelect(e.target.name);
-  }
-  function handleComment(e) {
-    setText(e.target.name);
-  }
+  // function handleHotelName(e) {
+  //   setHotelName(e.target.name);
+  // }
+  // function handleName(e) {
+  //   setName(e.target.name);
+  // }
+  // function handleSelect(e) {
+  //   setSelect(e.target.name);
+  // }
+  // function handleComment(e) {
+  //   setText(e.target.name);
+  // }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -52,7 +57,23 @@ function CreateComent() {
             <CardBody alignItems="center" justifyContent="center">
               <FormControl isRequired onSubmit={(e) => handleSubmit(e)}>
                 <FormLabel ml="25px"> First Name </FormLabel>
-                <Input
+                
+                <Button type="submit" color="teal">
+                  Submit
+                </Button>
+              </FormControl>
+            </CardBody>
+          </Card>
+        </Box>
+      </Grid>
+    </Box>
+  );
+}
+
+export default CreateComent;
+
+
+{/* <Input
                   onChange={(e) => handleName(e)}
                   mr="50%"
                   width="38%"
@@ -90,17 +111,4 @@ function CreateComent() {
                   ml="10px"
                   mt="20px"
                   type="textarea"
-                ></Input>
-                <Button type="submit" color="teal">
-                  Submit
-                </Button>
-              </FormControl>
-            </CardBody>
-          </Card>
-        </Box>
-      </Grid>
-    </Box>
-  );
-}
-
-export default CreateComent;
+                ></Input> */}
