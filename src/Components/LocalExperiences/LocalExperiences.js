@@ -1,53 +1,39 @@
-import { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import CardActivities from "../CardActivities/CardActivities.js";
-import axios from "axios";
-const { REACT_APP_GET_ALL_SERVICES } = process.env;
+import { Box } from "@chakra-ui/react";
+import SearchBar from "../SearchBar/SearchBar.js";
+import { getServices } from "../../Redux/actions/services";
 
 function LocalExperiences() {
+  const dispatch = useDispatch();
 
-    const [activities, setActivities] = useState([]);
+  const activities = useSelector((state) => state.services);
 
-    useEffect(() => {
+  useEffect(() => {
+    dispatch(getServices());
+  }, [dispatch]);
 
-        axios.get(REACT_APP_GET_ALL_SERVICES)
-            .then((res) => {
-                console.log(res)
-                setActivities(res.data)
-            })
-            .catch((err) => console.log(err))
-
-    }, []);
-
-    console.log(activities);
-
-    if (activities.length > 1) {
-
-        return (
-            <div>
-                {activities.length > 1 && activities.map((activitie) => {
-                    return (
-                        <CardActivities
-                            name={activitie.name}
-                            description={activitie.description}
-                            image={activitie.image}
-                            price={activitie.price}
-                        />
-                    );
-                })}
-            </div>
-        );
-
-    } else {
-
-        return (
-
-            <div>Loading...</div>
-
-        )
-
-    };
-
-};
-
+  return (
+    <div>
+      <Box mt="30px">
+        <SearchBar />
+      </Box>
+      <br></br>
+      {activities &&
+        activities.map((activitie) => {
+          return (
+            <CardActivities
+              name={activitie.name}
+              description={activitie.description}
+              image={activitie.image}
+              price={activitie.price}
+            />
+          );
+        })}
+    </div>
+  );
+}
 
 export default LocalExperiences;

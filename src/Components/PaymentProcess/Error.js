@@ -13,7 +13,7 @@ export const Error = () => {
       <Box
         marginTop={"10rem"}
         marginBottom={"10rem"}
-        backgroundColor={"teal"}
+        bg={"teal"}
         opacity={"0.8"}
         width={"40rem"}
         height={"20rem"}
