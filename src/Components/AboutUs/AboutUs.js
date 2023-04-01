@@ -9,7 +9,6 @@ import { BsInstagram } from "react-icons/bs";
 function AboutUs() {
   return (
     <Box position="relative">
-      {" "}
       <Box
         height="400px"
         background={`url('${jujuy}')`}
@@ -29,17 +28,16 @@ function AboutUs() {
           color="white"
           mr="75%"
         >
-          {" "}
-          What is Iberá ?{" "}
+          What is Iberá ?
         </Text>
       </Box>
-      <Box height="2px" width="50%" ml="25%" backgroundColor="teal" mt="20px" />
+      <Box height="2px" width="50%" ml="25%" bg="teal" mt="20px" />
       <Box mt="40px" mb="50px">
         <Text fontSize="2xl" color="teal" as="b">
           We’re glad you asked
         </Text>
 
-        <Text mt="20px" width="70%" ml="300px">
+        <Text mt="20px" width="70%" ml="200px">
           Iberá Hotels offers its guests beautiful places to stay, travel and
           work abroad indefinitely. In addition, we use our in-depth local
           knowledge to continuously create authentic activities and experiences
@@ -49,7 +47,7 @@ function AboutUs() {
           prefer to stay inside with a new and exciting way to explore the world
         </Text>
       </Box>
-      <Box height="2px" width="50%" ml="25%" backgroundColor="teal" mt="20px" />
+      <Box height="2px" width="50%" ml="25%" bg="teal" mt="20px" />
       <Grid templateColumns="1fr 1fr">
         <Box mt="70px" ml="50px">
           <Box mb="40px" mt="40px">
@@ -67,7 +65,7 @@ function AboutUs() {
             and work abroad seamlessly.
           </Text>
           <Text as="b" color="teal" mt="70px" display="flow">
-            Contact Us !{" "}
+            Contact Us !
           </Text>
           <Link>
             <Icon ml="20px" fontSize="2em" as={RiFacebookCircleFill}></Icon>
@@ -83,7 +81,7 @@ function AboutUs() {
           <Image padding="10px" src={atardecer} />
         </Box>
       </Grid>
-      <Box mb="50px" height="2px" width="50%" ml="25%" backgroundColor="teal" />
+      <Box mb="50px" height="2px" width="50%" ml="25%" bg="teal" />
     </Box>
   );
 }

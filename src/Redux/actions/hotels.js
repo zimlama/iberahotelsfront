@@ -67,16 +67,10 @@ export function createHotel(payload) {
   };
 }
 
-export function getCity(city, inDate, outDate) {
-  console.log(inDate);
-  console.log(outDate);
+export function getCity(city) {
   return async function (dispatch) {
     try {
       let json = await axios.get(`${REACT_APP_GET_ALL_HOTELS}?city=${city}`);
-      // #13 30.54 src/Redux/actions/hotels.js
-      // ﻿#13 30.54   Line 76:53:  Unexpected use of comma operator  no-sequences
-      // json.data.forEach((h) => ((h.checkIn = inDate), (h.checkOut = outDate)));
-
       return dispatch({
         type: GET_NAME_CITIES,
         payload: json.data,

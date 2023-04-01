@@ -78,7 +78,7 @@ function HotelDetails() {
           <Image borderRadius="9px" src={dtHotel.image} />
         </Box>
       </Grid>
-      <Box height="2px" width="50%" ml="25%" backgroundColor="teal" mt="20px" />
+      <Box height="2px" width="50%" ml="25%" bg="teal" mt="20px" />
       <Box mt="20px">
         <Text mr="70%" as="b" fontSize="xl" mt="60px" color="teal" size="4xl">
           Types of Rooms available:{" "}
