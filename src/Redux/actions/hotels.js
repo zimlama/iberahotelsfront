@@ -8,9 +8,12 @@ import {
   GET_HOTEL_BY_ID,
   CLEAN_FILTER,
   CREATE_HOTEL,
+  GET_NAME_CITIES,
+  REACT_APP_PASS_DATE,
+  REACT_APP_TAKE_DATE,
 } from "../actions-types/index";
 
-const { REACT_APP_GET_ALL_HOTELS,REACT_APP_POST_HOTELS } = process.env;
+const { REACT_APP_GET_ALL_HOTELS, REACT_APP_POST_HOTELS } = process.env;
 
 export function getAllHotels() {
   return async function (dispatch) {
@@ -23,14 +26,6 @@ export function getAllHotels() {
       console.error(error);
     }
   };
-  // return async function(dispatch){
-  //     let json = await axios('http://localhost:3010/hotels');
-  //     // console.log(json)
-  //     return dispatch({
-  //         type:'GET_HOTELS',
-  //         payload: json.data
-  //     })
-  // }
 }
 
 export function filterHotelsByCity(city) {
@@ -51,22 +46,50 @@ export function getHotelById(id) {
     }
   };
 }
-export function cleanFilter(id){
-  return { type: CLEAN_FILTER, payload:id} 
-    }
-  
+export function cleanFilter(id) {
+  return { type: CLEAN_FILTER, payload: id };
+}
+
 export function createHotel(payload) {
   return async function (dispatch) {
-console.log('input que recibo', payload)//!!!!!!!!!!!!!!!!
-try{
-  console.log("ENTRE EN TRY")
-  const newHotel = await axios.post("REACT_APP_POST_HOTELS", payload)
-  console.log('input que muestro', newHotel.data)//!!!!!!!!!!!!!!
-  return dispatch({
-  type: CREATE_HOTEL,
-  payload: newHotel.data
-  })
-}catch(err){
-console.log("ROMPIO",err)
+    console.log("input que recibo", payload);
+    try {
+      console.log("ENTRE EN TRY");
+      const newHotel = await axios.post(REACT_APP_POST_HOTELS, payload);
+      console.log("input que muestro", newHotel.data);
+      return dispatch({
+        type: CREATE_HOTEL,
+        payload: newHotel.data,
+      });
+    } catch (err) {
+      console.log("ROMPIO", err);
+    }
+  };
+}
 
-}}}
+export function getCity(city) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.get(`${REACT_APP_GET_ALL_HOTELS}?city=${city}`);
+      return dispatch({
+        type: GET_NAME_CITIES,
+        payload: json.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+}
+
+export const passDate = (checkIn, checkOut) => {
+  return {
+    type: REACT_APP_PASS_DATE,
+    payload: [checkIn, checkOut],
+  };
+};
+
+export const takeDate = () => {
+  return {
+    type: REACT_APP_TAKE_DATE,
+  };
+};

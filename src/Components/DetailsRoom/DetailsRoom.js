@@ -1,3 +1,7 @@
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { v4 } from "uuid";
+
 import {
   Card,
   CardBody,
@@ -7,13 +11,14 @@ import {
   Heading,
   CardFooter,
   Button,
-  Link,
   Icon,
   Box,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoBedSharp } from "react-icons/io5";
+
+import allActions from "../../Redux/actions/";
+const { takeDate } = allActions;
 
 function DetailsRoom({
   idRooms,
@@ -23,7 +28,20 @@ function DetailsRoom({
   price,
   image,
 }) {
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
+  const dates = useSelector((state) => state.dates);
+  console.log(dates);
+
+  function restarFechas(fecha1, fecha2) {
+    let diferencia = new Date(fecha2).getTime() - new Date(fecha1).getTime();
+    let dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    return dias;
+  }
+
+  let diferenciaEnDias;
+  if (dates) diferenciaEnDias = restarFechas(dates[0], dates[1]);
 
   function handleBanana() {
     let room = {
@@ -32,35 +50,42 @@ function DetailsRoom({
       bed_quantity: bed_quantity,
       price: price,
       image: image,
+      quantity: diferenciaEnDias,
     };
 
     window.localStorage.setItem("roomcart", JSON.stringify(room)); //a localSt solo le podemos enviar strings
+    window.localStorage.setItem(
+      "totalprice",
+      JSON.stringify(room.price * room.quantity)
+    );
     return navigate("/shoppingcart");
   }
+  const bed_icons = [];
+  for (let i = 0; i < bed_quantity; i++) {
+    bed_icons.push(<Icon key={v4()} as={IoBedSharp} />);
+  }
+
+  useEffect(() => {
+    dispatch(takeDate());
+  }, [dispatch]);
+
   return (
-    <Box mt="20px" padding="20px">
+    <Box mt="20px" padding="20px" boxSize="">
       <Card
         direction={{ base: "column", sm: "row" }}
         overflow="hidden"
         variant="outline"
       >
         <Image
-          objectFit="cover"
-          maxW={{ base: "80%", sm: "150px" }}
+          objectFit="fill"
+          maxW={{ base: "100%", sm: "450px" }}
+          mb="40px"
+          mt="30px"
+          padding="20px"
+          ml="10px"
           alt="hotelIbera"
           src={image[0]}
         />
-        {/* {image &&
-          image.map((i) => {
-            return (
-              <Image
-                objectFit="cover"
-                maxW={{ base: "100%", sm: "200px" }}
-                alt="hotelIbera"
-                src={i}
-              />
-            );
-          })} */}
 
         <Stack>
           <CardBody ml="40px">
@@ -69,14 +94,12 @@ function DetailsRoom({
             </Heading>
 
             <Text fontSize="xl" py="12" mb="50px">
-              {bed_quantity} beds
-              <Icon ml="30px" as={IoBedSharp}></Icon>
+              Beds quantity <Text color="teal">{bed_icons}</Text>
               <Text mt="10px" fontSize="md">
                 {description}
               </Text>
             </Text>
             <Text mr="70%" color="teal" mt="10px">
-              {" "}
               Price per night: ${price}
             </Text>
           </CardBody>
@@ -90,6 +113,9 @@ function DetailsRoom({
             >
               Reserve
             </Button>
+            <Box mt={"7px"} ml={"0.7rem"}>
+              <Text>Days Selected: {diferenciaEnDias}</Text>
+            </Box>
           </CardFooter>
         </Stack>
       </Card>

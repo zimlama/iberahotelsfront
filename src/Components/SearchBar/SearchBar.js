@@ -1,23 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import {
   Input,
   Button,
   Box,
   Grid,
-  Select,
   FormControl,
   FormLabel,
-  FormHelperText,
-  FormErrorMessage,
 } from "@chakra-ui/react";
-import "./searchbar.css";
-import { FiArrowDown } from "react-icons/fi";
 
-function SearchBar() {
-  const [destination, setDestination] = useState("");
+import "./searchbar.css";
+import allActions from "../../Redux/actions";
+const { getAllHotels, getCity, passDate } = allActions;
+
+function SearchBar({ setEnable }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllHotels());
+  }, [dispatch]);
+
   const [inDate, setInDate] = useState("");
   const [outDate, setOutDate] = useState("");
-  const [beds, setBeds] = useState("");
+  const [city, setCity] = useState("");
+
+  function handleImputChange(e) {
+    e.preventDefault();
+    setCity(e.target.value);
+  }
+
+  function buttonSubmit(e) {
+    console.log(e);
+    e.preventDefault();
+    setEnable(true);
+    dispatch(getCity(city));
+    dispatch(passDate(inDate, outDate));
+    setCity("");
+  }
 
   const today = new Date().toISOString().split("T")[0];
 
@@ -25,9 +43,6 @@ function SearchBar() {
   const onlyLettersCheck = (input) => {
     return onlyLetters.test(input);
   };
-  function handleInputDestination(e) {
-    setDestination(e.target.value);
-  }
 
   function handleInputCheckIn(e) {
     setInDate(e.target.value);
@@ -35,53 +50,41 @@ function SearchBar() {
   function handleInputCheckOut(e) {
     setOutDate(e.target.value);
   }
-  function handleInputBeds(e) {
-    setBeds(e.target.value);
-  }
   function handleSubmit(e) {
     e.preventDefault();
     if (onlyLettersCheck(e.target.value)) {
     }
   }
-  const isError = destination === "";
 
   return (
     <Box
       borderRadius="8px"
-      bgColor="teal"
+      bg="teal"
       opacity="0.9"
       paddingBottom="10px"
       paddingTop="10px"
       width="90%"
       marginLeft="70px"
     >
-      <Box ml="17%">
+      <Box display="flex" mx="auto" ml="17%">
         <FormControl onSubmit={(e) => handleSubmit(e)}>
           <Input
-            isInvalid={isError}
             mr="300px"
             width="500px"
-            backgroundColor="white"
-            placeHolder="Destination"
+            bg="white"
+            placeholder="Destination"
             type="text"
-            value={destination}
-            onChange={handleInputDestination}
+            value={city}
+            id="input-filter"
+            onChange={handleImputChange}
           />
-          {isError ? (
-            <FormHelperText mr="600px" mt="2px" color="black">
-              Select a destination, please
-            </FormHelperText>
-          ) : (
-            <FormErrorMessage mr="200px">
-              Destination is required
-            </FormErrorMessage>
-          )}
+
           <Grid templateColumns="1fr 1fr 1fr 1fr">
             <Box>
               <FormLabel color="white">Check-In</FormLabel>
               <input
                 className="checkin"
-                bgColor="white"
+                bg="white"
                 type="date"
                 value={inDate}
                 min={today}
@@ -92,7 +95,7 @@ function SearchBar() {
               <FormLabel color="white">Check-out</FormLabel>
               <input
                 className="checkin"
-                bgColor="white"
+                bg="white"
                 type="date"
                 value={outDate}
                 min={today}
@@ -100,21 +103,6 @@ function SearchBar() {
               ></input>
             </Box>
 
-            <Select
-              width="50%"
-              color="black"
-              bgColor="white"
-              mr="10px"
-              mt="32px"
-              rightIcon={FiArrowDown}
-              value={beds}
-              onChange={handleInputBeds}
-            >
-              <option value="option1">1 bed</option>
-              <option value="option2">2 beds</option>
-              <option value="option3">3 beds</option>
-              <option value="option4">4 beds</option>
-            </Select>
             <Box>
               <Button
                 mr="160px"
@@ -123,6 +111,7 @@ function SearchBar() {
                 colorScheme="teal"
                 variant="outline"
                 type="submit"
+                onClick={(e) => buttonSubmit(e)}
               >
                 Check Availability
               </Button>

@@ -12,8 +12,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     <Auth0Provider
-      domain="dev-fm6k7h0d4wkymqri.us.auth0.com"
-      clientId="B5d5cWpVL4Ajg0WNck10m8xlEf60QASa"
+      domain="dev-elskv0bc6witw5r1.us.auth0.com"
+      clientId="LIsxhiAwSGUFCeFtzSnoEBUVb9yVvGkh"
       authorizationParams={{
         redirect_uri: window.location.origin
       }}
@@ -27,6 +27,7 @@ root.render(
   </Provider>
 );
 
+// test fixed with (ea0e436 fixed railway 14.36PM)
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
